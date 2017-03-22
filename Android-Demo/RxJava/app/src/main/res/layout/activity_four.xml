@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_four"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ppdl.rxjava.FourActivity">
+    tools:context="com.ppdl.rxjava.rx.FourActivity">
 
     <TextView
         android:id="@+id/tv_receiver"
@@ -17,18 +16,36 @@
 
     <Button
         android:id="@+id/btn1"
-        android:text="发送1"
+        android:text="单击1"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn2"
-        android:text="发送2"
+        android:text="单击2"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btn3"
+        android:text="单击3"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:text="单击4"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

@@ -10,28 +10,28 @@
 
     <Button
         android:id="@+id/btn1"
-        android:text="RxJava"
+        android:text="RxJava 1"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn2"
-        android:text="RxBus"
+        android:text="RxJava 2"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn3"
-        android:text="开始3"
+        android:text="RxBus 1"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn4"
-        android:text="开始4"
+        android:text="RxBus 2"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

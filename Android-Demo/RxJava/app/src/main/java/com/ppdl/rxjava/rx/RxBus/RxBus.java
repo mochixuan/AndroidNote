@@ -1,4 +1,4 @@
-package com.ppdl.rxjava.RxBus;
+package com.ppdl.rxjava.rx.RxBus;
 
 import java.util.HashMap;
 
@@ -18,7 +18,7 @@ public class RxBus {
     private final Subject<Object,Object> mSubject;
     private HashMap<String, CompositeSubscription> mSubscriptionMap;        /*compositeSubscription:可以存很多*/
 
-    public RxBus() {
+    private RxBus() {
         mSubject = new SerializedSubject<>(PublishSubject.create());
     }
 
@@ -38,7 +38,7 @@ public class RxBus {
         mSubject.onNext(object);
     }
 
-    /*返回指定类型的Observable实例*/
+    /*返回指定类型的Observable实例 获取这个类型的实例*/
     public <T> Observable<T> toObservable(final Class<T> type){
         return mSubject.ofType(type);
     }
@@ -81,10 +81,9 @@ public class RxBus {
             return;
         }
         if (mSubscriptionMap.get(key) != null) {
-            mSubscriptionMap.get(key).unsubscribe();
+            mSubscriptionMap.get(key).unsubscribe();            //主要的作用代码
         }
         mSubscriptionMap.remove(key);
     }
-
 
 }

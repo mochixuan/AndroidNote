@@ -1,4 +1,4 @@
-package com.ppdl.rxjava;
+package com.ppdl.rxjava.rx;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,11 +6,12 @@ import android.widget.TextView;
 
 import com.ppdl.rxjava.FlatMap.Course;
 import com.ppdl.rxjava.FlatMap.Student;
+import com.ppdl.rxjava.R;
+import com.ppdl.rxjava.base.BaseActivty;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;

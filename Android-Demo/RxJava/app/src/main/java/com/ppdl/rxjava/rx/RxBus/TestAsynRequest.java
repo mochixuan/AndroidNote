@@ -1,4 +1,4 @@
-package com.ppdl.rxjava.RxBus;
+package com.ppdl.rxjava.rx.RxBus;
 
 import android.widget.TextView;
 

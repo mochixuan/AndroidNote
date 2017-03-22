@@ -1,4 +1,4 @@
-package com.ppdl.rxjava;
+package com.ppdl.rxjava.tool;
 
 import android.content.Context;
 import android.widget.Toast;

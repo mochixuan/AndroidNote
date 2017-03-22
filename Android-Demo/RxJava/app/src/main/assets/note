@@ -32,14 +32,26 @@
     (2).Schedulers.newThread(): 总是启用新线程，并在新线程执行操作.
     (3).Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler。行为模式和 newThread() 差不多，区别在于 io() 的内部实现是是用一个无数量上限的线程池，可以重用空闲的线程，
             因此多数情况下 io() 比 newThread() 更有效率。不要把计算工作放在 io() 中，可以避免创建不必要的线程
-    (4).Schedulers.computation(): 计算所使用的 Scheduler。这个计算指的是 CPU 密集型计算，即不会被 I/O 等操作限制性能的操作，例如图形的计算。这个 Scheduler 使用的固定的线程池，大小为 CPU 核数。
+    (4).Schedulers.computation(): 计算所使用的 Scheduler。用于循环，这个计算指的是 CPU 密集型计算，即不会被 I/O 等操作限制性能的操作，例如图形的计算。这个 Scheduler 使用的固定的线程池，大小为 CPU 核数。
             不要把 I/O 操作放在 computation() 中，否则 I/O 操作的等待时间会浪费 CPU
     (5).Android 还有一个专用的 AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行。
     (6)observeOn() 指定的是它之后的操作所在的线程。因此如果有多次切换线程的需求，只要在每个想要切换线程的位置调用一次 observeOn() 即可.
     (7)subscribeOn()不同于 observeOn(),subscribeOn() 的位置放在哪里都可以，但它是只能调用一次的.
     (8)Observable.doOnSubscribe():它和 Subscriber.onStart() 同样是在 subscribe() 调用后而且在事件发送前执行，但区别在于它可以指定线程.
 
+12.repeat(): 创建一个重复发射指定数据或数据序列的
 
+13.defer():只有当订阅者订阅才创建Observable；为每个订阅创建一个新的 Observable.defer
+
+14 range():创建一个发射指定范围的整数序列的Observable
+
+15 interval(): 创建一个按照给定的时间间隔发射整数序列的Observable.interval(1, TimeUnit.SECONDS); 每隔
+
+16 timer(): 创建一个在给定的延时之后发射单个数据的Observable   几秒后就一次
+
+17 distinct()：只允许还没有发射过的数据项通过 1,1,2,3 -- 1,2,3
+
+18 是 filter 操作符的一个特殊形式。它过滤一个Observable只返回指定类型的数据。
 
 一.SecondActivity里的笔记
 

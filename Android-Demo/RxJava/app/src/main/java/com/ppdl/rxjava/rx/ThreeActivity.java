@@ -1,28 +1,19 @@
-package com.ppdl.rxjava;
+package com.ppdl.rxjava.rx;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ppdl.rxjava.RxBus.OneEvent;
-import com.ppdl.rxjava.RxBus.RxBus;
-import com.ppdl.rxjava.RxBus.TestAsynRequest;
+import com.ppdl.rxjava.R;
+import com.ppdl.rxjava.rx.RxBus.OneEvent;
+import com.ppdl.rxjava.rx.RxBus.RxBus;
+import com.ppdl.rxjava.rx.RxBus.TestAsynRequest;
+import com.ppdl.rxjava.base.BaseActivty;
 
-import org.w3c.dom.ls.LSInput;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import rx.Observable;
-import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 public class ThreeActivity extends BaseActivty implements View.OnClickListener{
 

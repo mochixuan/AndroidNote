@@ -1,9 +1,13 @@
 package com.ppdl.rxjava;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.ppdl.rxjava.base.BaseActivty;
+import com.ppdl.rxjava.rx.FiveActivity;
+import com.ppdl.rxjava.rx.FourActivity;
+import com.ppdl.rxjava.rx.SecondActivity;
+import com.ppdl.rxjava.rx.ThreeActivity;
 
 public class MainActivity extends BaseActivty implements View.OnClickListener{
 
@@ -35,11 +39,13 @@ public class MainActivity extends BaseActivty implements View.OnClickListener{
                 openActivity(SecondActivity.class);
                 break;
             case R.id.btn2:
-                openActivity(ThreeActivity.class);
+                openActivity(FourActivity.class);
                 break;
             case R.id.btn3:
+                openActivity(ThreeActivity.class);
                 break;
             case R.id.btn4:
+                openActivity(FiveActivity.class);
                 break;
             case R.id.btn5:
                 break;
