@@ -1,31 +1,30 @@
 package com.ppdl.rxjava.rx.RxBus1;
 
-import com.ppdl.rxjava.rx.RxBus.RxBus;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 
 import rx.Observable;
-import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 import rx.subjects.PublishSubject;
 import rx.subjects.SerializedSubject;
 import rx.subjects.Subject;
+import rx.subscriptions.CompositeSubscription;
 
-//写的不怎么好
 public class RxBus1 {
 
     private static volatile RxBus1 mInstance;
     private final Subject<Object,Object> mSubject;
-    private Map<Class<?>, Object> mSubscriptionMap;        /*compositeSubscription:可以存很多*/
+    private HashMap<String, CompositeSubscription> mSubscriptionMap;        /*compositeSubscription:可以存很多*/
 
     private RxBus1() {
         mSubject = new SerializedSubject<>(PublishSubject.create());
-        mSubscriptionMap = new ConcurrentHashMap<>();
     }
 
     public static RxBus1 getInstance(){
         if(mInstance==null){
-            synchronized (RxBus.class){
+            synchronized (RxBus1.class){
                 if(mInstance==null){
                     mInstance=new RxBus1();
                 }
@@ -39,35 +38,9 @@ public class RxBus1 {
         mSubject.onNext(object);
     }
 
-    /*发送新sticky事件*/
-    public void postSticky(Object object) {
-        synchronized (mInstance) {
-            mSubscriptionMap.put(object.getClass(), object);
-        }
-        post(object);
-    }
-
     /*返回指定类型的Observable实例 获取这个类型的实例*/
-    public <T> rx.Observable<T> toObservable(final Class<T> type){
+    public <T> Observable<T> toObservable(final Class<T> type){
         return mSubject.ofType(type);
-    }
-
-    /*返回指定类型的粘性Observable实例 获取这个类型的实例*/
-    public <T> Observable<T> toObservableSticky(final Class<T> type) {
-        synchronized (mSubscriptionMap) {
-            Observable<T> observable = toObservable(type);
-            final Object event = mSubscriptionMap.get(type);
-            if (event != null) {
-                return observable.mergeWith(Observable.create(new Observable.OnSubscribe<T>() {         //自发
-                    @Override
-                    public void call(Subscriber<? super T> subscriber) {
-                        subscriber.onNext(type.cast(event));
-                    }
-                }));
-            } else {
-                return observable;
-            }
-        }
     }
 
     /*是否已有观察者订阅*/
@@ -75,25 +48,42 @@ public class RxBus1 {
         return mSubject.hasObservers();
     }
 
-    /*根据ype获取粘性事件*/
-    public <T> T getStickyEvent(Class<T> type) {
-        synchronized (mSubscriptionMap) {
-            return type.cast(mSubscriptionMap.get(type));
+    /* 一个默认的订阅方法*/
+    public <T> Subscription doSubscribe(Class<T> type, Action1<T> next, Action1<Throwable> error) {
+        return toObservable(type)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(next, error);
+    }
+
+    /*保存订阅后的subscription*/
+    public void addSubscription(Object o, Subscription subscription) {
+        if (mSubscriptionMap == null) {
+            mSubscriptionMap = new HashMap<>();
+        }
+        String key = o.getClass().getName();
+        if (mSubscriptionMap.get(key) != null) {
+            mSubscriptionMap.get(key).add(subscription);
+        } else {
+            CompositeSubscription compositeSubscription = new CompositeSubscription();
+            compositeSubscription.add(subscription);
+            mSubscriptionMap.put(key, compositeSubscription);
         }
     }
 
-    /*移除指定type的粘性事件*/
-    public <T> T removeStickyEvent(Class<T> type) {
-        synchronized (mSubscriptionMap) {
-            return type.cast(mSubscriptionMap.remove(type));
+    /*取消订阅*/
+    public void unSubscribe(Object o) {
+        if (mSubscriptionMap == null) {
+            return;
         }
-    }
-
-    /*移除所以粘性事件*/
-    public void removeAllStickyEvents() {
-        synchronized (mSubscriptionMap) {
-            mSubscriptionMap.clear();
+        String key = o.getClass().getName();
+        if (!mSubscriptionMap.containsKey(key)){
+            return;
         }
+        if (mSubscriptionMap.get(key) != null) {
+            mSubscriptionMap.get(key).unsubscribe();            //主要的作用代码
+        }
+        mSubscriptionMap.remove(key);
     }
 
 }

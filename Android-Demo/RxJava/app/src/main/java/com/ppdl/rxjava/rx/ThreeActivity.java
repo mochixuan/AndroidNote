@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ppdl.rxjava.R;
-import com.ppdl.rxjava.rx.RxBus.OneEvent;
-import com.ppdl.rxjava.rx.RxBus.RxBus;
-import com.ppdl.rxjava.rx.RxBus.TestAsynRequest;
+import com.ppdl.rxjava.rx.RxBus1.OneEvent;
+import com.ppdl.rxjava.rx.RxBus1.RxBus1;
+import com.ppdl.rxjava.rx.RxBus1.TestAsynRequest;
 import com.ppdl.rxjava.base.BaseActivty;
 
 import rx.Subscription;
@@ -85,7 +85,7 @@ public class ThreeActivity extends BaseActivty implements View.OnClickListener{
     }
 
     public void onSubscribeString(){
-        Subscription subscription=RxBus.getInstance()
+        Subscription subscription= RxBus1.getInstance()
                 .toObservable(String.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -95,11 +95,11 @@ public class ThreeActivity extends BaseActivty implements View.OnClickListener{
                         setTvReceivers("订阅String:"+s);
                     }
                 });
-        RxBus.getInstance().addSubscription(this,subscription);
+        RxBus1.getInstance().addSubscription(this,subscription);
     }
 
     public void onSubscribeInt(){
-        Subscription subscription=RxBus.getInstance()
+        Subscription subscription= RxBus1.getInstance()
                 .toObservable(Integer.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -109,11 +109,11 @@ public class ThreeActivity extends BaseActivty implements View.OnClickListener{
                         setTvReceivers("订阅Integer:"+integer);
                     }
                 });
-        RxBus.getInstance().addSubscription(this,subscription);
+        RxBus1.getInstance().addSubscription(this,subscription);
     }
 
     public void onSubscribeOneEvent(){
-        Subscription subscription=RxBus.getInstance()
+        Subscription subscription= RxBus1.getInstance()
                 .toObservable(OneEvent.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -123,13 +123,14 @@ public class ThreeActivity extends BaseActivty implements View.OnClickListener{
                         setTvReceivers("订阅OneEvent:"+oneEvent.getData());
                     }
                 });
-        RxBus.getInstance().addSubscription(this,subscription);
+        RxBus1.getInstance().addSubscription(this,subscription);
     }
 
 
+    //Demo写错了
     @Override
     protected void onDestroy() {
-        RxBus.getInstance().unSubscribe(this);                          //取消订阅
+        RxBus1.getInstance().unSubscribe(this);                          //取消订阅
         super.onDestroy();
     }
 }

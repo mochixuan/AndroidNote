@@ -1,6 +1,7 @@
 package com.ppdl.rxjava.rx;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,7 +12,9 @@ import com.ppdl.rxjava.base.BaseActivty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -20,6 +23,7 @@ import rx.schedulers.Schedulers;
 
 public class SecondActivity extends BaseActivty implements View.OnClickListener{
 
+    private static final String TAG = "SecondActivity";
     private TextView tvReceiver;
     private List<String> mData;
 
@@ -37,6 +41,8 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
         findViewById(R.id.btn4).setOnClickListener(this);
         findViewById(R.id.btn5).setOnClickListener(this);
         findViewById(R.id.btn6).setOnClickListener(this);
+        findViewById(R.id.btn7).setOnClickListener(this);
+        findViewById(R.id.btn8).setOnClickListener(this);
         tvReceiver = (TextView) findViewById(R.id.tv_receiver);
     }
 
@@ -72,6 +78,12 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
                 break;
             case R.id.btn6:
                 take();
+                break;
+            case R.id.btn7:
+                switchMap();
+                break;
+            case R.id.btn8:
+                buffer();
                 break;
         }
     }
@@ -256,6 +268,144 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
                         setTvReceivers(s);
                     }
                 });
+    }
+
+    public void switchMap() {
+        Observable.just(1,2,3,4)
+                .switchMap(new Func1<Integer, Observable<String>>() {
+                    @Override
+                    public Observable<String> call(Integer integer) {
+                        return Observable.just(integer+"").subscribeOn(Schedulers.newThread());
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.e(TAG,"===================onCompleted");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG,"===================onError");
+                    }
+
+                    @Override
+                    public void onNext(String integer) {
+                        Log.e(TAG,"===================onNext:"+integer);
+                    }
+                });
+
+        Log.i(TAG,"===========================================================================");
+
+        Observable.just(1,2,3,4)
+                .switchMap(new Func1<Integer,Observable<String>>(){
+                    @Override
+                    public Observable<String> call(Integer integer) {
+                        return Observable.just(integer+"");
+                    }
+                })
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.e(TAG,"===================onCompleted1");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG,"===================onError1");
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.e(TAG,"===================onNext1:"+s);
+                    }
+                });
+    }
+
+    public void buffer() {
+        Observable.just("A","B","C","D","E","F","G")
+                .buffer(2)
+                .subscribe(new Subscriber<List<String>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<String> strings) {
+                        Log.e(TAG,"===================onNext1:"+strings);
+                    }
+                });
+
+        Log.i(TAG,"===========================================================================");
+
+        Observable.just("A","B","C","D","E","F","G")
+                .buffer(2,3)
+                .subscribe(new Subscriber<List<String>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<String> strings) {
+                        Log.e(TAG,"===================onNext2:"+strings);
+                    }
+                });
+
+        Log.i(TAG,"===========================================================================");
+
+        Observable.just("A","B","C","D","E","F","G")
+                .buffer(3,2)
+                .subscribe(new Subscriber<List<String>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<String> strings) {
+                        Log.e(TAG,"===================onNext3:"+strings);
+                    }
+                });
+
+        Log.i(TAG,"===========================================================================");
+
+        Observable.just("A","B","C","D","E","F","G")
+                .buffer(1,2, TimeUnit.SECONDS)
+                .subscribe(new Subscriber<List<String>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<String> strings) {
+                        Log.e(TAG,"===================onNext4:"+strings);
+                    }
+                });
+
     }
 
 }

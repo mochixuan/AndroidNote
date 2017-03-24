@@ -1,4 +1,4 @@
-package com.ppdl.rxjava.rx.RxBus;
+package com.ppdl.rxjava.rx.RxBus1;
 
 public class OneEvent {
 

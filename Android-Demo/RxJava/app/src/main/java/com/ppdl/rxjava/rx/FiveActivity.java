@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ppdl.rxjava.R;
-import com.ppdl.rxjava.rx.RxBus1.RxBus1;
+import com.ppdl.rxjava.rx.RxBus2.RxBus2;
 import com.ppdl.rxjava.base.BaseActivty;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
@@ -70,13 +70,13 @@ public class FiveActivity extends BaseActivty implements View.OnClickListener{
                 .subscribe(new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {
-                        RxBus1.getInstance().postSticky("first my");
+                        RxBus2.getInstance().postSticky("first my");
                     }
                 });
     }
 
     public void receiverSticky() {
-        RxBus1.getInstance()
+        RxBus2.getInstance()
                 .toObservableSticky(String.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -90,7 +90,7 @@ public class FiveActivity extends BaseActivty implements View.OnClickListener{
                             tvReceiver.setText(tvReceiver.getText().toString()+"\n"+
                                     "收到数据:"+s);
                         }
-                        RxBus1.getInstance().removeStickyEvent(String.class);
+                        RxBus2.getInstance().removeStickyEvent(String.class);
                     }
                 });
     }

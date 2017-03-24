@@ -11,21 +11,23 @@
 
 5.flatMap():和map()有点像just和from的关系.
 
-6.lift():(可用用来封装4，5-但不建议使用)在 Observable 执行了 lift(Operator) 方法之后，会返回一个新的 Observable，这个新的 Observable 会像一个代理一样，负责接收原始的 Observable 发出的事件，并在处理后发送给 Subscriber.
+6.switchMap():当源Observable发射一个新的数据项时，如果旧数据项订阅还未完成，就取消旧订阅数据和停止监视那个数据项产生的Observable,开始监视新的数据项.
 
-7.filter():过滤不用的，筛选
+7.lift():(可用用来封装4，5-但不建议使用)在 Observable 执行了 lift(Operator) 方法之后，会返回一个新的 Observable，这个新的 Observable 会像一个代理一样，负责接收原始的 Observable 发出的事件，并在处理后发送给 Subscriber.
 
-8.take(3):取前三条 takeLast(3)：后三个
+8.filter():过滤不用的，筛选
 
-9.timeout()超时出错
+9.take(3):取前三条 takeLast(3)：后三个
+
+10.timeout()超时出错
 
 
-10.  (1).自动创建 Subscriber ，并使用 onNextAction 来定义 onNext()    observable.subscribe(onNextAction);
+11.  (1).自动创建 Subscriber ，并使用 onNextAction 来定义 onNext()    observable.subscribe(onNextAction);
     (2).自动创建 Subscriber ，并使用 onNextAction 和 onErrorAction 来定义 onNext() 和 onError()  observable.subscribe(onNextAction, onErrorAction);
     (3).自动创建 Subscriber ，并使用 onNextAction、 onErrorAction 和 onCompletedAction 来定义 onNext()、 onError() 和 onCompleted()
             observable.subscribe(onNextAction, onErrorAction, onCompletedAction);
 
-11.Scheduler:调度器
+12.Scheduler:调度器
     (0).subscribeOn():Observable.OnSubscribe 被激活时所处的线程。    事件产生的线程
     (0).observeOn():指定 Subscriber 所运行在的线程                   消费的线程
     (1).Schedulers.immediate(): 直接在当前线程运行，相当于不指定线程。这是默认的 Scheduler.
@@ -39,19 +41,48 @@
     (7)subscribeOn()不同于 observeOn(),subscribeOn() 的位置放在哪里都可以，但它是只能调用一次的.
     (8)Observable.doOnSubscribe():它和 Subscriber.onStart() 同样是在 subscribe() 调用后而且在事件发送前执行，但区别在于它可以指定线程.
 
-12.repeat(): 创建一个重复发射指定数据或数据序列的
+13.repeat(): 创建一个重复发射指定数据或数据序列的
 
-13.defer():只有当订阅者订阅才创建Observable；为每个订阅创建一个新的 Observable.defer
+14.defer():只有当订阅者订阅才创建Observable；为每个订阅创建一个新的 Observable.defer
 
-14 range():创建一个发射指定范围的整数序列的Observable
+15 range():创建一个发射指定范围的整数序列的Observable rang(10,5)--11,12,13,14,15
 
-15 interval(): 创建一个按照给定的时间间隔发射整数序列的Observable.interval(1, TimeUnit.SECONDS); 每隔
+16 interval(): 创建一个按照给定的时间间隔发射整数序列的Observable.interval(1, TimeUnit.SECONDS); 每隔
 
-16 timer(): 创建一个在给定的延时之后发射单个数据的Observable   几秒后就一次
+17 timer(): 创建一个在给定的延时之后发射单个数据的Observable   几秒后就一次
 
-17 distinct()：只允许还没有发射过的数据项通过 1,1,2,3 -- 1,2,3
+18 distinct()：只允许还没有发射过的数据项通过 1,1,2,3 -- 1,2,3
 
-18 是 filter 操作符的一个特殊形式。它过滤一个Observable只返回指定类型的数据。
+19 filter() 操作符的一个特殊形式。它过滤一个Observable只返回指定类型的数据。
+
+20 groupBy():分组 就是按照一种类型的key分组
+
+21 flatMapIterable():它的作用是处理一些复杂的数据，接受一个Observable之后，返回一个Iterable，然后，这个Iterable会依次的传递给下面一层或者是Observer
+
+22 buffer() : 操作符周期性地收集源Observable产生的结果到列表中，并把这个列表提交给订阅者，订阅者处理后，清空buffer列表，同时接收下一次收集的结果并提交给订阅者，周而复始.
+                需要注意的是，一旦源Observable在产生结果的过程中出现异常，即使buffer已经存在收集到的结果，订阅者也会马上收到这个异常，并结束整个过程.
+                buffer(count, skip)从原始Observable的第一项数据开始创建新的缓存，此后每当收到skip项数据，用count项数据填充缓存：
+                开头的一项和后续的count-1项，它以列表(List)的形式发射缓存，取决于count和skip的值
+                ，这些缓存可能会有重叠部分（比如skip < count时），也可能会有间隙（比如skip > count时）
+                just("A","B","C").buffer(2) [A,B] [C]
+
+23 skip(): 跳过开始的N项数据
+
+24 elementAt(): 发射第N项数据
+
+25 startWith(): 在数据序列的开头增加一项数据
+
+26 Concat(): 在数据序列的末尾增加一项数据
+
+27 merge(): 将多个Observable合并为一个 任何一个原始Observable的onError通知会被立即传递给观察者，而且会终止合并后的Observable。
+
+26 mergeDelayError(): 合并多个Observables，让没有错误的Observable都完成后再发射错误通知
+
+27 Zip():通过一个函数将多个Observables的发射物结合到一起，基于这个函数的结果为每个结合体发射单个数据项。1 2 3    A B C D  1A 2B 3C 发送少的
+
+28 onErrorReturn() 让Observable遇到错误时候发生一个特殊的数据并且正常终止
+
+29 onErrorResumeNext() 让Observable遇到错误时开始发射第二个Observable数据序列
 
 一.SecondActivity里的笔记
 

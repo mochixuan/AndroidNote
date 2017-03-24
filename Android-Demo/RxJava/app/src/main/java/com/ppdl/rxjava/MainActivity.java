@@ -6,6 +6,7 @@ import android.view.View;
 import com.ppdl.rxjava.base.BaseActivty;
 import com.ppdl.rxjava.rx.FiveActivity;
 import com.ppdl.rxjava.rx.FourActivity;
+import com.ppdl.rxjava.rx.RxBusActivity;
 import com.ppdl.rxjava.rx.SecondActivity;
 import com.ppdl.rxjava.rx.ThreeActivity;
 
@@ -48,6 +49,7 @@ public class MainActivity extends BaseActivty implements View.OnClickListener{
                 openActivity(FiveActivity.class);
                 break;
             case R.id.btn5:
+                openActivity(RxBusActivity.class);
                 break;
             case R.id.btn6:
                 break;

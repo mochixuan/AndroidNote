@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -6,48 +5,49 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.ppdl.rxjava.MainActivity">
+    tools:context="com.ppdl.rxjava.rx.RxBusActivity">
 
     <Button
         android:id="@+id/btn1"
-        android:text="RxJava 1"
-        android:layout_margin="10dp"
+        android:text="订阅String数据"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn2"
-        android:text="RxJava 2"
-        android:layout_margin="10dp"
+        android:text="RxLife订阅数据"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn3"
-        android:text="RxBus 1"
-        android:layout_margin="10dp"
+        android:text="订阅粘性事件"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn4"
-        android:text="RxBus 2"
-        android:layout_margin="10dp"
+        android:text="发送String数据"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn5"
-        android:text="RxBus"
-        android:layout_margin="10dp"
+        android:text="RxLife发送String数据"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn6"
-        android:text="开始6"
-        android:layout_margin="10dp"
+        android:text="发送粘性事件"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_receiver"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

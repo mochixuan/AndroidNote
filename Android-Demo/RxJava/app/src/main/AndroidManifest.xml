@@ -3,11 +3,11 @@
     package="com.ppdl.rxjava">
 
     <application
+        android:name=".application.MiApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".application.MiApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -19,7 +19,8 @@
         <activity android:name=".rx.SecondActivity" />
         <activity android:name=".rx.ThreeActivity" />
         <activity android:name=".rx.FourActivity" />
-        <activity android:name=".rx.FiveActivity"></activity>
+        <activity android:name=".rx.FiveActivity" />
+        <activity android:name=".rx.RxBusActivity"></activity>
     </application>
 
 </manifest>

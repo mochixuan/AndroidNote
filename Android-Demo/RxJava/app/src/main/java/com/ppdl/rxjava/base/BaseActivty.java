@@ -1,5 +1,6 @@
 package com.ppdl.rxjava.base;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import com.ppdl.rxjava.tool.ToastUtils;
@@ -17,7 +18,7 @@ public abstract class BaseActivty extends RxAppCompatActivity{
         InitData();
     }
 
-    public void openActivity(Class<? extends BaseActivty> toActivity){
+    public void openActivity(Class<? extends Activity> toActivity){
         Intent intent=new Intent(this,toActivity);
         startActivity(intent);
     }
