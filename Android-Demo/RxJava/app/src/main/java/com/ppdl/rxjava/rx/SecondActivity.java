@@ -195,13 +195,22 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
                         //System.out.println("--------:1");                     两次一六次2
                         return rx.Observable.from(student.getCourses());
                     }
-                }).subscribe(new Action1<Course>() {
-            @Override
-            public void call(Course course) {
-                //System.out.println("--------:2");
-                setTvReceivers(course.getCourseName());
-            }
-        });
+                })
+                .subscribe(new Subscriber<Course>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Course course) {
+                        setTvReceivers(course.getCourseName());
+                    }
+                });
     }
 
     private Student student1;
@@ -326,6 +335,7 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
     public void buffer() {
         Observable.just("A","B","C","D","E","F","G")
                 .buffer(2)
+                .subscribeOn(Schedulers.newThread())
                 .subscribe(new Subscriber<List<String>>() {
                     @Override
                     public void onCompleted() {
@@ -342,6 +352,7 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
                         Log.e(TAG,"===================onNext1:"+strings);
                     }
                 });
+
 
         Log.i(TAG,"===========================================================================");
 
@@ -367,7 +378,7 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
         Log.i(TAG,"===========================================================================");
 
         Observable.just("A","B","C","D","E","F","G")
-                .buffer(3,2)
+                .buffer(3,2) //下一个数据从哪里开始取
                 .subscribe(new Subscriber<List<String>>() {
                     @Override
                     public void onCompleted() {
