@@ -6,13 +6,20 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
         <!--可以定义很多样式-->
         <!--<item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:windowBackground">@color/textColorPrimary</item>-->
     </style>
 
-    <style name="AppThemeNotitle" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppThemeNoTitle" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <!--可以定义很多样式-->
+        <!--<item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:windowBackground">@color/textColorPrimary</item>-->
     </style>
 
     <style name="SwitchStyle" parent="Theme.AppCompat.Light">

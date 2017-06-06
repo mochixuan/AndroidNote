@@ -16,55 +16,57 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.CoordinatorActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.CoordinatorActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.AppBarActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.AppBarActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.DrawerNaviActivity"
-            android:theme="@style/AppThemeNotitle" />
-        <activity android:name=".activity.FloatingSnakeBarActivity" />
+            android:name=".activity.previous.DrawerNaviActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity android:name=".activity.previous.FloatingSnakeBarActivity" />
         <activity
-            android:name=".activity.TabLayoutActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.TabLayoutActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.TextInputActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.TextInputActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.RippleActitvity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.RippleActitvity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.RevelAniActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.RevelAniActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.ScreenActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.ScreenActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
             android:name=".activity.screen.ScreenOneActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:theme="@style/AppThemeNoTitle" />
         <activity
             android:name=".activity.screen.JumpOneActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.SheetActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.SheetActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.SheetDialogActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.SheetDialogActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.SwitchCompatActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:name=".activity.previous.SwitchCompatActivity"
+            android:theme="@style/AppThemeNoTitle" />
         <activity
             android:name=".activity.screen.ScreenTwoActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:theme="@style/AppThemeNoTitle" />
         <activity
             android:name=".activity.screen.JumpTwoActivity"
-            android:theme="@style/AppThemeNotitle" />
+            android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.AppBarLayout1"
-            android:theme="@style/AppThemeNotitle" />
-        <activity android:name=".bottom.BottomActivity"></activity>
+            android:name=".activity.previous.AppBarLayout1"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity android:name=".bottom.BottomActivity" />
+        <activity android:name=".activity.anim.Anim1Activity" />
+        <activity android:name=".activity.anim.Anim2Activity"></activity>
     </application>
 
 </manifest>

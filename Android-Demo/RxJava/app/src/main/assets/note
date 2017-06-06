@@ -1,4 +1,4 @@
-                                                        截取别人的笔记(对错未知)
+                                                        Rxjava1截取别人的笔记(对错未知)
 
 参数解析
 1.just(T...): 将传入一个或多个参数依次发送出来:Observable.just("a", "b", "c");
@@ -9,7 +9,7 @@
 
 4.map():转换功能通过FunCX(x,y) 方法将参数中的 String 对象转换成一个 Bitmap 对象后返回，而在经过 map() 方法后，事件的参数类型也由 String 转为了 Bitmap。
 
-5.flatMap():和map()有点像just和from的关系.
+5.flatMap():和map()有点像just和from的关系. 并不能保证发送数据按照原顺序发送，如果需要可以使用concatMap进行取代(性能可能会下降在某种情况下)
 
 6.switchMap():当源Observable发射一个新的数据项时，如果旧数据项订阅还未完成，就取消旧订阅数据和停止监视那个数据项产生的Observable,开始监视新的数据项.
 
@@ -83,6 +83,8 @@
 28 onErrorReturn() 让Observable遇到错误时候发生一个特殊的数据并且正常终止
 
 29 onErrorResumeNext() 让Observable遇到错误时开始发射第二个Observable数据序列
+
+30 Debounce() : 等多少秒后如果没有数据就会执行，如果在时间之内就抛掉之前的数据
 
 一.SecondActivity里的笔记
 

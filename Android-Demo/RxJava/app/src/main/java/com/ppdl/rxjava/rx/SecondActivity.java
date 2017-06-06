@@ -144,6 +144,7 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
     };
 
 
+
     /*------------------------2.start--------------------------*/
     public void printString(){
         String[] names={"江西","深圳","北京"};

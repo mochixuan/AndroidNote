@@ -20,7 +20,8 @@
         <activity android:name=".rx.ThreeActivity" />
         <activity android:name=".rx.FourActivity" />
         <activity android:name=".rx.FiveActivity" />
-        <activity android:name=".rx.RxBusActivity"></activity>
+        <activity android:name=".rx.RxBusActivity" />
+        <activity android:name=".rx2.RxJava2Activity"></activity>
     </application>
 
 </manifest>

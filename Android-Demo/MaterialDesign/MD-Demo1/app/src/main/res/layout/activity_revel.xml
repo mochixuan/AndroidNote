@@ -6,17 +6,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        tools:context="com.ppdl.md.activity.RevelAniActivity">
+        tools:context="com.ppdl.md.activity.previous.RevelAniActivity">
 
         <Button
             android:id="@+id/iv_img"
-            android:background="@mipmap/icon_test2"
+            android:background="@mipmap/icon_test6"
             android:layout_width="240dp"
             android:layout_height="240dp" />
 
         <Button
             android:id="@+id/iv_img1"
-            android:background="@mipmap/icon_test2"
+            android:background="@mipmap/icon_test6"
             android:layout_width="240dp"
             android:layout_height="240dp" />
 

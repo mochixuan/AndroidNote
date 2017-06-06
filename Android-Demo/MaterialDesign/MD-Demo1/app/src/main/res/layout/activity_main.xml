@@ -14,19 +14,24 @@
             android:layout_marginLeft="10dp"
             tools:context="com.ppdl.md.MainActivity">
 
+            <Button
+                android:id="@+id/btn_anim"
+                android:text="新增场景动画"
+                android:outlineProvider="background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+            <Button
+                android:id="@+id/btn_coordinator"
+                android:text="CoordinatorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_coordinator"
-                    android:text="CoordinatorLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/btn_apptablayout"
-                    android:text="AppTabLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_apptablayout"
+                android:text="AppTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btn_apptablayout1"
@@ -34,71 +39,71 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_drawer"
-                    android:text="DrawerLayout NavigationView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_drawer"
+                android:text="DrawerLayout NavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_float"
-                    android:text="FloatActionButton SnakeBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_float"
+                android:text="FloatActionButton SnakeBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_tabLayout"
-                    android:text="TabLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_tabLayout"
+                android:text="TabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_textinput"
-                    android:text="TextInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_textinput"
+                android:text="TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_ripple"
-                    android:text="Ripple"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_ripple"
+                android:text="Ripple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_revel"
-                    android:text="Revel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_revel"
+                android:text="Revel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_screen"
-                    android:text="Screen"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_screen"
+                android:text="Screen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_sheets"
-                    android:text="Sheets"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_sheets"
+                android:text="Sheets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_sheets_dialog"
-                    android:text="SheetsDialog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_sheets_dialog"
+                android:text="SheetsDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_switch"
-                    android:text="SwitchCompat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_switch"
+                android:text="SwitchCompat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <Button
-                    android:id="@+id/btn_bottomnavi"
-                    android:text="BottomNavigation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_bottomnavi"
+                android:text="BottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>

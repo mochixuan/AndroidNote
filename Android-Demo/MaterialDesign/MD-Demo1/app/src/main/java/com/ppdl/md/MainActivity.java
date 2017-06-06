@@ -3,11 +3,8 @@ package com.ppdl.md;
 import android.databinding.ViewDataBinding;
 import android.view.View;
 
-import com.ppdl.md.activity.AppBarActivity;
-import com.ppdl.md.activity.AppBarLayout1;
 import com.ppdl.md.activity.CoordinatorActivity;
 import com.ppdl.md.activity.DrawerNaviActivity;
-import com.ppdl.md.activity.FloatingSnakeBarActivity;
 import com.ppdl.md.activity.RevelAniActivity;
 import com.ppdl.md.activity.RippleActitvity;
 import com.ppdl.md.activity.ScreenActivity;
@@ -16,11 +13,15 @@ import com.ppdl.md.activity.SheetDialogActivity;
 import com.ppdl.md.activity.SwitchCompatActivity;
 import com.ppdl.md.activity.TabLayoutActivity;
 import com.ppdl.md.activity.TextInputActivity;
+import com.ppdl.md.activity.anim.Anim1Activity;
+import com.ppdl.md.activity.previous.AppBarActivity;
+import com.ppdl.md.activity.previous.AppBarLayout1;
+import com.ppdl.md.activity.previous.FloatingSnakeBarActivity;
 import com.ppdl.md.base.BaseActivity;
 import com.ppdl.md.bottom.BottomActivity;
 import com.ppdl.md.databinding.ActivityMainBinding;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     private ActivityMainBinding binding;
@@ -37,6 +38,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public void InitData() {
+        binding.btnAnim.setOnClickListener(this);
         binding.btnCoordinator.setOnClickListener(this);
         binding.btnApptablayout.setOnClickListener(this);
         binding.btnApptablayout1.setOnClickListener(this);
@@ -55,7 +57,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
+            case R.id.btn_anim:
+                openActitivity(Anim1Activity.class);
+                break;
             case R.id.btn_coordinator:
                 openActitivity(CoordinatorActivity.class);
                 break;
