@@ -1,20 +1,15 @@
-package com.ppdl.md.activity;
+package com.ppdl.md.activity.previous;
 
 import android.databinding.ViewDataBinding;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.ppdl.md.R;
 import com.ppdl.md.base.BaseActivity;
 import com.ppdl.md.databinding.ActivityTablayoutBinding;
 import com.ppdl.md.fragment.MiFragment;
-
-import static android.os.Build.VERSION_CODES.M;
 
 public class TabLayoutActivity extends BaseActivity {
 

@@ -1,8 +1,6 @@
-package com.ppdl.md.activity;
+package com.ppdl.md.activity.previous;
 
 import android.databinding.ViewDataBinding;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.ppdl.md.R;
 import com.ppdl.md.base.BaseActivity;

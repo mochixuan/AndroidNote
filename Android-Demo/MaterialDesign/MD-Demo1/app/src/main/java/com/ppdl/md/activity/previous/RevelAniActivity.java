@@ -1,17 +1,13 @@
-package com.ppdl.md.activity;
+package com.ppdl.md.activity.previous;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.databinding.ViewDataBinding;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.view.Window;
 import android.view.animation.DecelerateInterpolator;
 
 import com.ppdl.md.R;

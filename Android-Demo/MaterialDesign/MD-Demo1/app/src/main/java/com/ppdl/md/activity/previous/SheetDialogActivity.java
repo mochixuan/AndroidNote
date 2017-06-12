@@ -1,14 +1,9 @@
-package com.ppdl.md.activity;
+package com.ppdl.md.activity.previous;
 
 import android.databinding.ViewDataBinding;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.ppdl.md.R;
 import com.ppdl.md.base.BaseActivity;

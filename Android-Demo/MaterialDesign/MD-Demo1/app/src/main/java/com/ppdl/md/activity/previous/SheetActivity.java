@@ -1,17 +1,13 @@
-package com.ppdl.md.activity;
+package com.ppdl.md.activity.previous;
 
 import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.ppdl.md.R;
 import com.ppdl.md.base.BaseActivity;
 import com.ppdl.md.databinding.ActivitySheetBinding;
-
-import static android.support.design.widget.BottomSheetBehavior.from;
 
 public class SheetActivity extends BaseActivity {
 
