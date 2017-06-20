@@ -22,7 +22,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
     public abstract int getLayouId();
 
 
-    public abstract void onBindView(BaseViewHolder holder,T data);
+    public abstract void onBindView(BaseViewHolder holder, T data);
 
     public BaseAdapter() {
         mDatas = new ArrayList<>();

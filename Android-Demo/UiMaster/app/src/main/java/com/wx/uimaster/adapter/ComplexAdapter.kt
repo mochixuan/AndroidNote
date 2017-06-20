@@ -7,10 +7,12 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bigkoo.convenientbanner.ConvenientBanner
 import com.wx.uimaster.R
 import com.wx.uimaster.adapter.viewholder.BaseViewHolder
 import com.wx.uimaster.databinding.*
 import com.wx.uimaster.model.ModelThree
+import com.wx.uimaster.widget.banner.MViewHolderCreator
 
 class ComplexAdapter(private val mActivity: Activity, private val mResults: List<ModelThree>) : RecyclerView.Adapter<BaseViewHolder>() {
 
@@ -35,21 +37,28 @@ class ComplexAdapter(private val mActivity: Activity, private val mResults: List
         val binding = holder.binding
 
         if (binding is ItemBannerBinding) {
-            binding.ivBanner.setBackgroundResource(mResults[position].icon)
+            val images = arrayListOf<Int>()
+            mResults.get(position).icon.map { images.add(it) }
+            //如果是项目将开始StartTuring和结束stopTurning放在onresume和onpause里防止内存溢出，这里就不放了
+            binding.banner.stopTurning()
+            binding.banner.startTurning(3000);
+            binding.banner.setPages(MViewHolderCreator(),images)
+            binding.banner.setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT)
+            binding.banner.setPageIndicator(intArrayOf(R.mipmap.icon_indicator_p,R.mipmap.icon_indicator_n))
         } else if (binding is ItemNavBinding) {
-            binding.ivNav.setBackgroundResource(mResults[position].icon)
+            binding.ivNav.setBackgroundResource(mResults[position].icon[0])
         } else if (binding is ItemHeadBinding) {
-            binding.ivHead.setBackgroundResource(mResults[position].icon)
+            binding.ivHead.setBackgroundResource(mResults[position].icon[0])
             binding.tvHead.setText(mResults[position].title)
         } else if (binding is ItemRecommendBinding) {
             binding.tvRecommend.setText(mResults[position].title)
-            binding.ivRecommend.setBackgroundResource(mResults[position].icon)
+            binding.ivRecommend.setBackgroundResource(mResults[position].icon[0])
         } else if (binding is ItemActionBinding) {
-            binding.ivAction.setBackgroundResource(mResults[position].icon)
+            binding.ivAction.setBackgroundResource(mResults[position].icon[0])
             binding.tvAction1.setText(mResults[position].title)
             binding.tvAction2.setText(mResults[position].content)
         } else if (binding is ItemListBinding) {
-            binding.ivList.setBackgroundResource(mResults[position].icon)
+            binding.ivList.setBackgroundResource(mResults[position].icon[0])
             binding.tvListTitle.setText(mResults[position].title)
             binding.tvListContent.setText(mResults[position].content)
         }
