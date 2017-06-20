@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">UiMaster</string>
+    <string name="complex_recyclerview_layout">Complex Recyclerview Layout</string>
+</resources>
