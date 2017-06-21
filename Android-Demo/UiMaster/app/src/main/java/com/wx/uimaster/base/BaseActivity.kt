@@ -1,5 +1,6 @@
 package com.wx.uimaster.base
 
+import android.app.Activity
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
@@ -24,7 +25,7 @@ abstract class BaseActivity : AppCompatActivity() {
         initData()
     }
 
-    fun openActivity(activity: Class<out BaseActivity>) {
+    fun openActivity(activity: Class<out Activity>) {
         val intent = Intent(this, activity)
         startActivity(intent)
     }

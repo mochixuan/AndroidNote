@@ -40,8 +40,9 @@ class ComplexAdapter(private val mActivity: Activity, private val mResults: List
             val images = arrayListOf<Int>()
             mResults.get(position).icon.map { images.add(it) }
             //如果是项目将开始StartTuring和结束stopTurning放在onresume和onpause里防止内存溢出，这里就不放了
-            binding.banner.stopTurning()
-            binding.banner.startTurning(3000);
+            if (!binding.banner.isTurning) {
+                binding.banner.startTurning(3000)
+            }
             binding.banner.setPages(MViewHolderCreator(),images)
             binding.banner.setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT)
             binding.banner.setPageIndicator(intArrayOf(R.mipmap.icon_indicator_p,R.mipmap.icon_indicator_n))

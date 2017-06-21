@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ComplexRecyclerViewActivity"></activity>
+        <activity android:name=".activity.ComplexRecyclerViewActivity" />
+        <activity android:name=".activity.VCustomActivity" />
+        <activity android:name=".activity.VStyleActivity"></activity>
     </application>
 
 </manifest>
