@@ -60,7 +60,7 @@
             app:showText="true"
             app:switchPadding="20dp"
             app:thumbTextPadding="20dp"
-            app:trackTintMode=""
+            app:trackTintMode="add"
             />
 
         <View

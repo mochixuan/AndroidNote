@@ -22,6 +22,12 @@
                 android:layout_height="wrap_content" />
 
             <Button
+                android:id="@+id/btn_smallmi"
+                android:text="小米头部样式"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
                 android:id="@+id/btn_coordinator"
                 android:text="CoordinatorLayout"
                 android:layout_width="match_parent"
@@ -36,6 +42,12 @@
             <Button
                 android:id="@+id/btn_apptablayout1"
                 android:text="AppTabLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_apptablayout2"
+                android:text="AppTabLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

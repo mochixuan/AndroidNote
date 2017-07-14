@@ -4,8 +4,10 @@ import android.databinding.ViewDataBinding;
 import android.view.View;
 
 import com.ppdl.md.activity.anim.Anim1Activity;
+import com.ppdl.md.activity.anim.Anim3Activity;
+import com.ppdl.md.activity.previous.AppBar1Activity;
+import com.ppdl.md.activity.previous.AppBar2Activity;
 import com.ppdl.md.activity.previous.AppBarActivity;
-import com.ppdl.md.activity.previous.AppBarLayout1;
 import com.ppdl.md.activity.previous.CoordinatorActivity;
 import com.ppdl.md.activity.previous.DrawerNaviActivity;
 import com.ppdl.md.activity.previous.FloatingSnakeBarActivity;
@@ -39,9 +41,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void InitData() {
         binding.btnAnim.setOnClickListener(this);
+        binding.btnSmallmi.setOnClickListener(this);
         binding.btnCoordinator.setOnClickListener(this);
         binding.btnApptablayout.setOnClickListener(this);
         binding.btnApptablayout1.setOnClickListener(this);
+        binding.btnApptablayout2.setOnClickListener(this);
         binding.btnDrawer.setOnClickListener(this);
         binding.btnFloat.setOnClickListener(this);
         binding.btnTabLayout.setOnClickListener(this);
@@ -61,6 +65,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_anim:
                 openActitivity(Anim1Activity.class);
                 break;
+            case R.id.btn_smallmi:
+                openActitivity(Anim3Activity.class);
+                break;
             case R.id.btn_coordinator:
                 openActitivity(CoordinatorActivity.class);
                 break;
@@ -68,7 +75,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 openActitivity(AppBarActivity.class);
                 break;
             case R.id.btn_apptablayout1:
-                openActitivity(AppBarLayout1.class);
+                openActitivity(AppBar1Activity.class);
+                break;
+            case R.id.btn_apptablayout2:
+                openActitivity(AppBar2Activity.class);
                 break;
             case R.id.btn_drawer:
                 openActitivity(DrawerNaviActivity.class);

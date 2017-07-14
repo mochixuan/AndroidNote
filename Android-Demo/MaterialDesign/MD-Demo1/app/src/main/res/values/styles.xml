@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textAllCaps">false</item>
         <!--可以定义很多样式-->
         <!--<item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:windowBackground">@color/textColorPrimary</item>-->
@@ -29,6 +30,7 @@
         <item name="colorSwitchThumbNormal">@color/colorAccent</item>
         <!-- Inactive track color(30% transparency) switch关闭时的轨迹的颜色  30%这个颜色 -->
         <item name="android:colorForeground">@color/colorPrimaryDark</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
 </resources>
