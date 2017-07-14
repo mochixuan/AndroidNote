@@ -1,4 +1,5 @@
-## AndroidDemo (个人练习的Demo)#### 7静默安装和卸载> 到目前位置搞过了Android 4.2.2(MTK) 4.4.2(T3) 6.0(T3)
+## AndroidDemo (个人练习的Demo)#### 8 UI>看了米家的首页头部不错，简单实现了一下
+[image](https://github.com/mochixuan/170220AndroidDemo/blob/master/Android-Demo/MaterialDesign/MD-Demo1/img/xiaomi1.gif)[image](https://github.com/mochixuan/170220AndroidDemo/blob/master/Android-Demo/MaterialDesign/MD-Demo1/img/xiaomi2.gif)#### 7静默安装和卸载> 到目前位置搞过了Android 4.2.2(MTK) 4.4.2(T3) 6.0(T3)
 > 所以方法都是在拥有签名的情况下
 > 一段血泪史啊，写下经验
 > 下面6.0的方法在6.0一下是成功的，试过了
