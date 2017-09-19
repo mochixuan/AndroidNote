@@ -97,12 +97,24 @@
 
 4.在不指定线程的情况下， RxJava 遵循的是线程不变的原则，即：在哪个线程调用 subscribe()，就在哪个线程生产事件；在哪个线程生产事件，就在哪个线程消费事件。如果需要切换线程，就需要用到 Scheduler （调度器）。
 
+二. RxJava2Activity笔记
 
+1.BackpressureStrategy:出现上下游流速不均衡的时候应该怎么处理的办法.
+    0.当事件大于128时例如(1000),
+        (0).96是个关键的值，在DROP,LATEST,如果事件10000,先request(n) n<96,在5s后(事件结束)再request(128),结果0-(n-1) (n+1)-127 共128个事件 其中LATEST会多一个9999.
+        (1).当事件过多时DROP,LATEST,都是抛弃新产生的事件
+        (2).DROP:会等128事件处理完才加入新事件当10000时间，先request(1) 10s后再请求128只有1-127
+        (3).LATEST:处理n条后留下的一个空虚会等到请求它时放入当前最新的事件，当10000时间，先request(128) 10s后再请求128结果0-127, 222-317+9999
+    1.ERROR:这种方式会在出现上下游流速不均衡的时候直接抛出一个异常,这个异常就是著名的MissingBackpressureException.
+    2.BUFFER:它没有大小限制.
+    3.DROP:直接把存不下的事件丢弃.
+    4.LATEST:只保留最新的事件.
                                                                     RxBus
 1.Subject:在 RxJava 里有一个对象 Subject，既是 Observable 又是 Observer，可以把 Subject 理解成一个管道或者转发器，数据从一端输入，然后从另一端输出.
         Subject 有好几种，这里可以使用最简单的 PublishSubject。一旦数据从一端传入，结果会里立刻从另一端输出.
         PublishSubject只有被订阅后才会把接收到的事件立刻发送给订阅者.
 
 2.volitale:同步 http://blog.csdn.net/yueliangniao1/article/details/7227795
+
 
 

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.ppdl.md.activity.screen.ScreenFiveActivity">
+
+        <View
+            android:id="@+id/view_header"
+            android:transitionName="view_header"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btn_view"
+            android:transitionName="btn_view"
+            android:text="天"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:layout_below="@id/view_header"
+            android:layout_marginTop="-26dp"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/ripple_round"
+            android:layout_width="56dp"
+            android:layout_height="56dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_below="@id/view_header">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                 />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/button1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/button2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentBottom="true" />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:id="@+id/button5"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

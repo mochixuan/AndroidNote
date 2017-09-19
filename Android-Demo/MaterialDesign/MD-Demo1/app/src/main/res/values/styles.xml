@@ -12,6 +12,17 @@
         <item name="android:windowBackground">@color/textColorPrimary</item>-->
     </style>
 
+    <style name="AppThemeNoTitle1" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textAllCaps">false</item>
+        <!--可以定义很多样式-->
+        <!--<item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:windowBackground">@color/textColorPrimary</item>-->
+    </style>
+
     <style name="AppThemeNoTitle" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -31,6 +42,13 @@
         <!-- Inactive track color(30% transparency) switch关闭时的轨迹的颜色  30%这个颜色 -->
         <item name="android:colorForeground">@color/colorPrimaryDark</item>
         <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Status" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>

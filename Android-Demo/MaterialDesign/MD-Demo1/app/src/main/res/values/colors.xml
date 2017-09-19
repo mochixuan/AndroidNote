@@ -7,4 +7,9 @@
     <color name="windowBackgroung">#848383</color>
     <color name="gray">#666</color>
     <color name="text_primary_light">#ffffffff</color>
+
+    <color name="status1">#a712e7</color>
+    <color name="status2">#e60b33</color>
+    <color name="status3">#66a712e7</color>
+
 </resources>

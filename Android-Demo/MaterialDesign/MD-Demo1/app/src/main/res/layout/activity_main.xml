@@ -28,6 +28,12 @@
                 android:layout_height="wrap_content" />
 
             <Button
+                android:id="@+id/btn_status"
+                android:text="状态栏"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
                 android:id="@+id/btn_coordinator"
                 android:text="CoordinatorLayout"
                 android:layout_width="match_parent"

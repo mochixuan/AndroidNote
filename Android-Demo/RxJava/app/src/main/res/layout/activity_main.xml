@@ -20,7 +20,7 @@
 
         <Button
             android:id="@+id/btn2"
-            android:text="RxJava 2"
+            android:text="RxView 2"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
