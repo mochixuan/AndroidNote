@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HenCoder</string>
+    <string name="drawColor">drawColor</string>
+    <string name="drawCircle">drawCircle</string>
+    <string name="drawReact">drawReact</string>
+    <string name="drawPoint">drawPoint</string>
+    <string name="drawOval">drawOval</string>
+    <string name="drawLine">drawLine</string>
+    <string name="drawRoundReact">drawRoundReact</string>
+    <string name="drawArc">drawArc</string>
+    <string name="drawPath">drawPath</string>
+    <string name="drawBitmap">drawBitmap</string>
+    <string name="drawHistogram">drawHistogram</string>
+    <string name="drawPieChart">drawPieChart</string>
+</resources>
