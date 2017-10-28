@@ -1,4 +1,5 @@
 <resources>
+    <!--view 1-1-->
     <string name="app_name">HenCoder</string>
     <string name="drawColor">drawColor</string>
     <string name="drawCircle">drawCircle</string>
@@ -12,4 +13,23 @@
     <string name="drawBitmap">drawBitmap</string>
     <string name="drawHistogram">drawHistogram</string>
     <string name="drawPieChart">drawPieChart</string>
+
+    <!--view 1-2-->
+    <string name="LinearGradient">LinearGradient</string>
+    <string name="RadialGradient">RadialGradient</string>
+    <string name="SweepGradient">SweepGradient</string>
+    <string name="BitmapShader">BitmapShader</string>
+    <string name="ComposeShader">ComposeShader</string>
+    <string name="LightingColorFilter">LightingColorFilter</string>
+    <string name="ColorMatrixColorFilter">ColorMatrixColorFilter</string>
+    <string name="Xfermode">Xfermode</string>
+    <string name="StrokeCap">StrokeCap</string>
+    <string name="StrokeJoin">StrokeJoin</string>
+    <string name="StrokeMiter">StrokeMiter</string>
+    <string name="PathEffect">PathEffect</string>
+    <string name="ShadowLayer">ShadowLayer</string>
+    <string name="MaskFilter">MaskFilter</string>
+    <string name="FillPath">FillPath</string>
+    <string name="TextPath">TextPath</string>
+
 </resources>

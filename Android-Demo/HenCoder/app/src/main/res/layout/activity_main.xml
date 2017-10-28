@@ -13,5 +13,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:id="@+id/btn2"
+            app:layout_constraintTop_toBottomOf="@id/btn1"
+            android:text="自定义 View 1-2 Paint 详解"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -29,6 +29,8 @@ class Practice1PieChartView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+        canvas?.translate(-120f,0f)  //移动画布
+
         mRatios.forEachIndexed { index, item ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
@@ -37,21 +39,9 @@ class Practice1PieChartView : View {
                     gap+=mRatios[i]
                 }
 
-
                 mPaint.color = Color.WHITE
                 mPaint.strokeWidth = 4f
                 var centerAngle = (-(-45f+gap+item/2f-1)+360)%360
-                var flagX = 1;
-                var flagY = 1;
-                if ((centerAngle/90).toInt()>=0 && (centerAngle/90).toInt()<1) {
-                    flagY = -1
-                } else if ((centerAngle/90).toInt()>=1 && (centerAngle/90).toInt()<2) {
-                    flagY = -1
-                } else if ((centerAngle/90).toInt()>=2 && (centerAngle/90).toInt()<3) {
-                    flagY = -1
-                } else if ((centerAngle/90).toInt()>=3 && (centerAngle/90).toInt()<4) {
-
-                }
 
                 canvas?.drawLine(
                         (width!!/2+DisplayUtil.dpTopx(context,104f)*Math.cos(Math.PI*centerAngle/180f)).toFloat(),
@@ -61,17 +51,22 @@ class Practice1PieChartView : View {
                         mPaint
                 )
 
-                if (Math.cos(Math.PI*centerAngle/180f)>0) {
+                var linehendX = (width!!/2+DisplayUtil.dpTopx(context,120f)*Math.cos(Math.PI*centerAngle/180f)).toFloat()+(if (Math.cos(Math.PI*centerAngle/180f)>0) DisplayUtil.dpTopx(context,20f) else -DisplayUtil.dpTopx(context,20f))
+                var linehendY = (DisplayUtil.dpTopx(context,150f)-DisplayUtil.dpTopx(context,120f)*Math.sin(Math.PI*centerAngle/180f)).toFloat();
 
+                mPaint.textAlign = Paint.Align.RIGHT
+                if (Math.cos((centerAngle*Math.PI/180).toDouble())>=0) {
+                    mPaint.textAlign = Paint.Align.LEFT
                 }
 
-                var linehendY = (width!!/2+DisplayUtil.dpTopx(context,120f)*Math.cos(Math.PI*centerAngle/180f)).toFloat()+(if (Math.cos(Math.PI*centerAngle/180f)>0) DisplayUtil.dpTopx(context,20f) else -DisplayUtil.dpTopx(context,20f))
+                mPaint.textSize = DisplayUtil.dpTopx(context,12f)
+                canvas?.drawText(mTags[index],linehendX,linehendY+DisplayUtil.dpTopx(context,4f),mPaint)
 
                 canvas?.drawLine(
                         (width!!/2+DisplayUtil.dpTopx(context,120f)*Math.cos(Math.PI*centerAngle/180f)).toFloat(),
                         (DisplayUtil.dpTopx(context,150f)-DisplayUtil.dpTopx(context,120f)*Math.sin(Math.PI*centerAngle/180f)).toFloat(),
+                        linehendX,
                         linehendY,
-                        (DisplayUtil.dpTopx(context,150f)-DisplayUtil.dpTopx(context,120f)*Math.sin(Math.PI*centerAngle/180f)).toFloat(),
                         mPaint
                 )
 
@@ -79,8 +74,6 @@ class Practice1PieChartView : View {
                 if (index == mRatios.size-1) {
                     devi = -DisplayUtil.dpTopx(context,1f);
                 }
-
-
 
                 mPaint.color = Color.parseColor(mColors.get(index))
                 canvas?.drawArc(
