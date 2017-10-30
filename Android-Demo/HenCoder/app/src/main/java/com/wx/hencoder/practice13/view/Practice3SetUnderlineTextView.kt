@@ -5,8 +5,9 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.wx.hencoder.utils.DisplayUtil
 
-class Practice2FillPathView : View {
+class Practice3SetUnderlineTextView : View {
 
     private var mPaint = Paint()
 
@@ -22,6 +23,10 @@ class Practice2FillPathView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+        val text = "Hello MoChiXuan"
+        mPaint.textSize = DisplayUtil.dpTopx(context,24f)
+        mPaint.isUnderlineText = true
+        canvas?.drawText(text,100f,200f,mPaint)
     }
 
 }

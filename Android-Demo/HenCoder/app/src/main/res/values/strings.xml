@@ -32,4 +32,20 @@
     <string name="FillPath">FillPath</string>
     <string name="TextPath">TextPath</string>
 
+    <!--view 1-3-->
+    <string name="drawText">drawText</string>
+    <string name="staticLayout">staticLayout</string>
+    <string name="setTextSize">setTextSize</string>
+    <string name="setTypeface">setTypeface</string>
+    <string name="setfakeBoldText">setfakeBoldText</string>
+    <string name="setStrikeThruText">setStrikeThruText</string>
+    <string name="setUnderlineText">setUnderlineText</string>
+    <string name="setTextSkewX">setTextSkewX</string>
+    <string name="setTextScaleX">setTextScaleX</string>
+    <string name="setTextAlign">setTextAlign</string>
+    <string name="getFontSpacing">getFontSpacing</string>
+    <string name="measureText">measureText</string>
+    <string name="getTextBounds">getTextBounds</string>
+    <string name="getFontMetrics">getFontMetrics</string>
+
 </resources>

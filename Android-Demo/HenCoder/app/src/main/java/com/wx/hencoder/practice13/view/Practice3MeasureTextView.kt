@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 
-class Practice2FillPathView : View {
+class Practice3MeasureTextView : View {
 
     private var mPaint = Paint()
 

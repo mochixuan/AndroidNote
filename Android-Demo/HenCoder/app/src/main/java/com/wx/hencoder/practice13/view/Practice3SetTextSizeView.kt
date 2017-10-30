@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 
-class Practice2FillPathView : View {
+class Practice3SetTextSizeView : View {
 
     private var mPaint = Paint()
 
@@ -22,6 +22,16 @@ class Practice2FillPathView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+        val text = "Hello MoChiXuan"
+
+        mPaint.setTextSize(18f);
+        canvas?.drawText(text, 100f, 25f, mPaint);
+        mPaint.setTextSize(36f);
+        canvas?.drawText(text, 100f, 70f, mPaint);
+        mPaint.setTextSize(60f);
+        canvas?.drawText(text, 100f, 145f, mPaint);
+        mPaint.setTextSize(84f);
+        canvas?.drawText(text, 100f, 240f, mPaint);
     }
 
 }

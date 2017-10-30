@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 
-class Practice2FillPathView : View {
+class Practice3GetFontMetricsView : View {
 
     private var mPaint = Paint()
 
@@ -21,6 +21,8 @@ class Practice2FillPathView : View {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+
+
 
     }
 

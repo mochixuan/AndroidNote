@@ -5,8 +5,9 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.wx.hencoder.utils.DisplayUtil
 
-class Practice2FillPathView : View {
+class Practice3SetTextAlignView : View {
 
     private var mPaint = Paint()
 
@@ -21,6 +22,20 @@ class Practice2FillPathView : View {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+
+        val text = "Hello MoChiXuan"
+        mPaint.textSize = DisplayUtil.dpTopx(context,18f)
+
+        canvas?.drawText(text,400f,100f,mPaint)
+
+        mPaint.textAlign = Paint.Align.LEFT
+        canvas?.drawText(text,400f,200f,mPaint)
+
+        mPaint.textAlign = Paint.Align.CENTER
+        canvas?.drawText(text,400f,300f,mPaint)
+
+        mPaint.textAlign = Paint.Align.RIGHT
+        canvas?.drawText(text,400f,400f,mPaint)
 
     }
 

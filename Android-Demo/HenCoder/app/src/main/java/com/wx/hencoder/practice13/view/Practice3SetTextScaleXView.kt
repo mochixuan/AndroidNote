@@ -5,8 +5,9 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.wx.hencoder.utils.DisplayUtil
 
-class Practice2FillPathView : View {
+class Practice3SetTextScaleXView : View {
 
     private var mPaint = Paint()
 
@@ -21,6 +22,14 @@ class Practice2FillPathView : View {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+
+        val text = "Hello MoChiXuan"
+        mPaint.textSize = DisplayUtil.dpTopx(context,18f)
+
+        canvas?.drawText(text,100f,100f,mPaint)
+
+        mPaint.textScaleX = 1.6f
+        canvas?.drawText(text,60f,200f,mPaint)
 
     }
 

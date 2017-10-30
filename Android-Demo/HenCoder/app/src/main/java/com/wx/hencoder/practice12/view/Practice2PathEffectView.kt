@@ -5,6 +5,8 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
+
+
 class Practice2PathEffectView : View {
 
     private var mPaint = Paint()
@@ -33,13 +35,17 @@ class Practice2PathEffectView : View {
             if (i == 2) {
                 pathEffect = CornerPathEffect(50f);
             } else if (i == 3) {
-
+                pathEffect = DiscretePathEffect(20f,5f);
             } else if (i == 4) {
-
+                pathEffect = DashPathEffect(floatArrayOf(40f,15f,20f,10f),0f);
             } else if (i == 5) {
-
+                val dashPath = Path()
+                dashPath.addCircle(40f,40f,20f,Path.Direction.CW)
+                pathEffect = PathDashPathEffect(dashPath,40f,0f,PathDashPathEffect.Style.TRANSLATE)
             } else if (i == 6) {
-
+                val dashEffect = DashPathEffect(floatArrayOf(20f, 10f), 0f)
+                val discreteEffect = DiscretePathEffect(20f, 5f)
+                pathEffect = SumPathEffect(dashEffect, discreteEffect)
             } else if (i == 7) {
 
             }
