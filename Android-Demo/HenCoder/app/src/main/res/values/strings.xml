@@ -48,4 +48,20 @@
     <string name="getTextBounds">getTextBounds</string>
     <string name="getFontMetrics">getFontMetrics</string>
 
+    <!--view 1-4-->
+    <string name="clipRect">clipRect</string>
+    <string name="clipPath">clipPath</string>
+    <string name="translate">translate</string>
+    <string name="scale">scale</string>
+    <string name="rotate">rotate</string>
+    <string name="skew">skew</string>
+    <string name="matrixTranslate">matrixTranslate</string>
+    <string name="matrixScale">matrixScale</string>
+    <string name="matrixRotate">matrixRotate</string>
+    <string name="matrixSkew">matrixSkew</string>
+    <string name="cameraRotate">cameraRotate</string>
+    <string name="cameraRotateFixed">cameraRotateFixed</string>
+    <string name="cameraRotateHittingFace">cameraRotateHittingFace</string>
+    <string name="flibboard">flibboard</string>
+
 </resources>
