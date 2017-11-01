@@ -27,5 +27,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:id="@+id/btn4"
+            app:layout_constraintTop_toBottomOf="@id/btn3"
+            android:text="自定义 View 1-4 文字的绘制"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </android.support.constraint.ConstraintLayout>
 </layout>

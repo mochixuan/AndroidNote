@@ -1,10 +1,13 @@
 package com.wx.hencoder.practice11.view
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.graphics.Camera
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.wx.hencoder.R
 
 class Practice4CameraRotateView : View {
 
@@ -22,6 +25,22 @@ class Practice4CameraRotateView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+        val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.maps)
+
+        canvas?.drawBitmap(bitmap,100f,100f,mPaint)
+
+        val camera = Camera()
+
+
+        canvas?.save()
+
+        camera.save()
+        camera.rotate(10f,10f,0f)
+        camera.applyToCanvas(canvas)
+        camera.restore()
+
+        canvas?.drawBitmap(bitmap,450f,150f,mPaint)
+        canvas?.restore()
 
     }
 

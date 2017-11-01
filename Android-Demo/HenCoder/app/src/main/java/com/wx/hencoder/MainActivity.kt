@@ -6,6 +6,7 @@ import com.wx.hencoder.databinding.ActivityMainBinding
 import com.wx.hencoder.practice11.Practice11Activity
 import com.wx.hencoder.practice12.Practice12Activity
 import com.wx.hencoder.practice13.Practice13Activity
+import com.wx.hencoder.pratice14.Practice14Activity
 
 class MainActivity : BaseActivity() {
 
@@ -22,6 +23,7 @@ class MainActivity : BaseActivity() {
         binding!!.btn1.setOnClickListener { openActivity(Practice11Activity::class.java) }
         binding!!.btn2.setOnClickListener { openActivity(Practice12Activity::class.java) }
         binding!!.btn3.setOnClickListener { openActivity(Practice13Activity::class.java) }
+        binding!!.btn4.setOnClickListener { openActivity(Practice14Activity::class.java) }
     }
 
 

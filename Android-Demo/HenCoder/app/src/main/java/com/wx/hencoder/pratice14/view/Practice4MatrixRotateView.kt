@@ -1,10 +1,13 @@
 package com.wx.hencoder.practice11.view
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.wx.hencoder.R
 
 class Practice4MatrixRotateView : View {
 
@@ -22,6 +25,19 @@ class Practice4MatrixRotateView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+        val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.maps)
+        mPaint.alpha = 80
+        canvas?.drawBitmap(bitmap,100f,100f,mPaint)
+        mPaint.alpha = 255
+
+        val matrix = Matrix()
+        matrix.reset()
+        matrix.postRotate(45f,200f,200f)   //后面两个点设置旋转的中心点
+
+        canvas?.save()
+        canvas?.concat(matrix)
+        canvas?.drawBitmap(bitmap,100f,100f,mPaint)
+        canvas?.restore()
 
     }
 
