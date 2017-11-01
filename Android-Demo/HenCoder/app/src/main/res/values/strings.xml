@@ -64,4 +64,16 @@
     <string name="cameraRotateHittingFace">cameraRotateHittingFace</string>
     <string name="flibboard">flibboard</string>
 
+    <!--view 1-5-->
+    <string name="afterOnDraw">afterOnDraw</string>
+    <string name="beforeOnDraw">beforeOnDraw</string>
+    <string name="onDrawLayout">onDrawLayout</string>
+    <string name="dispatchDawLayout">dispatchDawLayout</string>
+    <string name="afterOnDrawForeground">afterOnDrawForeground</string>
+    <string name="beforeOnDrawForeground">beforeOnDrawForeground</string>
+    <string name="afterDraw">afterDraw</string>
+    <string name="beforeDraw">beforeDraw</string>
+
+    <string name="about_hencoder">HenCoder 是\n针对高级 Android 工程师\n的进阶手册\n旨在突破高手们最基础的技能瓶颈\n结束止步不前的状态，继续快速提升\n内容难度上也许对新手不够友好\n只能说句得罪了\n我个人水平有限\n照顾不到所有人</string>
+
 </resources>

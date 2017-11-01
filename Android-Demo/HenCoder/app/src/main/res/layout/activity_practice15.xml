@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.wx.hencoder.practice14.Practice14Activity">
+        tools:context="com.wx.hencoder.practice15.Practice15Activity">
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"

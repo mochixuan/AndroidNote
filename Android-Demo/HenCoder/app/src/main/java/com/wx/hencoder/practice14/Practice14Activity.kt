@@ -1,4 +1,4 @@
-package com.wx.hencoder.pratice14
+package com.wx.hencoder.practice14
 
 import android.databinding.ViewDataBinding
 import android.support.v4.app.Fragment
