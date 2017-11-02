@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <com.wx.hencoder.practice11.view.Practice7OfObjectLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.wx.hencoder.practice11.view.Practice7OfObjectView
+            android:id="@+id/view"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_start"
+            android:text="Start"
+            android:clickable="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="56dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </com.wx.hencoder.practice11.view.Practice7OfObjectLayout>
+</layout>

@@ -85,6 +85,14 @@
     <string name="objectanimatorlayout">objectanimatorlayout</string>
     <string name="objectanimatorview">objectanimatorview</string>
 
+    <!--view 1-7-->
+    <string name="argbEvaluator">argbEvaluator</string>
+    <string name="hsvEvaluator">hsvEvaluator</string>
+    <string name="ofObject">ofObject</string>
+    <string name="propertyValuesHolder">propertyValuesHolder</string>
+    <string name="animatorSet">animatorSet</string>
+    <string name="keyFrame">keyFrame</string>
+
     <string-array name="interpolators">
         <item>AccelerateDecelerateInterpolator</item>
         <item>LinearInterpolator</item>
