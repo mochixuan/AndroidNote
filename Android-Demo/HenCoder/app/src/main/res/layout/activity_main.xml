@@ -55,5 +55,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:id="@+id/btn8"
+            app:layout_constraintTop_toBottomOf="@id/btn7"
+            android:text="仿写酷界面"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -93,6 +93,12 @@
     <string name="animatorSet">animatorSet</string>
     <string name="keyFrame">keyFrame</string>
 
+    <!--view 1-8-->
+    <string name="likes">likesView</string>
+    <string name="tapeView">tapeView</string>
+    <string name="xmMotion">xmMotion</string>
+    <string name="flipBoard">flipBoard</string>
+
     <string-array name="interpolators">
         <item>AccelerateDecelerateInterpolator</item>
         <item>LinearInterpolator</item>
