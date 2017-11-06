@@ -5,7 +5,7 @@
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.wx.hencoder.practice11.view.Practice8LikesView
+        <com.wx.hencoder.practice18.view.Practice8LikesView
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -13,6 +13,26 @@
             android:background="#f0f0f0"
             android:layout_width="80dp"
             android:layout_height="40dp"/>
+
+        <com.wx.hencoder.practice18.view.likes.LikesImageView
+            android:id="@+id/like_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="40dp"
+            android:background="#6666"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+        <com.wx.hencoder.practice18.view.likes.LikesTextView
+            android:id="@+id/like_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="140dp"
+            android:background="#6666"
+            android:layout_width="100dp"
+            android:layout_height="80dp"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

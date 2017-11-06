@@ -1,80 +1,143 @@
 package com.wx.hencoder.practice18.view.likes
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.wx.hencoder.R
+import com.wx.hencoder.utils.DisplayUtil
 
 
-class LikesImageView : View {
+class LikesImageView : View,View.OnClickListener {
 
     private var mPaint = Paint()
     private var isLikes: Boolean = false
+
+    private var selectBitmap: Bitmap? = null
+    private var selectShiningBitmap: Bitmap? = null
+    private var unselectBitmap: Bitmap? = null
 
     constructor(context: Context) : this(context,null)
 
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs,0)
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-
+        init()
     }
 
+    private fun init() {
+        setOnClickListener(this)
+
+        unselectBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_comment_like)
+        selectBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_messages_like_selected)
+        selectShiningBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_messages_like_selected_shining)
+
+        mPaint.isAntiAlias = true
+        mPaint.style = Paint.Style.STROKE
+        mPaint.color = Color.parseColor("#E45B41")
+        mPaint.strokeWidth = DisplayUtil.dpTopx(context,2f)
+    }
 
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        val unselectBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_comment_like)
-        val selectBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_messages_like_selected)
-        val selectShiningBitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_messages_like_selected_shining)
-
-        var desWidth = width
-        var desHeight = height
-
-        var minHeight = 0
-
-        /*if (width<minWidth) {
-            desWidth = minWidth.toInt()
-        }
-        if (height<minHeight) {
-            desHeight = minHeight
-        }*/
-
-        minHeight = unselectBitmap.height
-
-
-
         if (isLikes) {
-
-            canvas?.drawBitmap(
-                    selectShiningBitmap,
-                    3f,
-                    desHeight/2f-selectBitmap.height+3,
-                    mPaint
-            )
-
-            canvas?.drawBitmap(
-                    selectBitmap,
-                    0f,
-                    desHeight/2f-selectBitmap.height/2f,
-                    mPaint
-            )
-
+            onDrawSelectBitmap(canvas!!)
+            onDrawBitmapWave(canvas!!)
         } else {
-
-            canvas?.drawBitmap(
-                    unselectBitmap,
-                    0f,
-                    desHeight/2f-unselectBitmap.height/2f,
-                    mPaint
-            )
-
+            onDrawUnSelectBitmap(canvas!!)
         }
-
 
     }
+
+    override fun onClick(p0: View?) {
+        onAnimator()
+    }
+
+    private fun onDrawUnSelectBitmap(canvas: Canvas) {
+        canvas?.drawBitmap(
+                unselectBitmap,
+                width/2f - unselectBitmap!!.width/2f,
+                height/2f-unselectBitmap!!.height/2f,
+                mPaint
+        )
+    }
+
+
+
+    private fun onDrawSelectBitmap(canvas: Canvas) {
+        canvas?.drawBitmap(
+                selectShiningBitmap,
+                width/2f+3f- unselectBitmap!!.width/2f,
+                height/2f-selectBitmap!!.height+3,
+                mPaint
+        )
+        canvas?.drawBitmap(
+                selectBitmap,
+                width/2f- unselectBitmap!!.width/2f,
+                height/2f-selectBitmap!!.height/2f,
+                mPaint
+        )
+    }
+
+    private fun onDrawBitmapWave(canvas: Canvas) {
+        if (circle>0.999) return
+        val radius: Float = (((1-circle)*0.6+1)*selectBitmap!!.width/2).toFloat()
+        mPaint.alpha = (circle*255).toInt()
+        val cx = width/2f
+        val cy = height/2f
+        canvas.drawCircle(
+                cx,
+                cy,
+                radius,
+                mPaint
+        )
+        mPaint.alpha = 255
+    }
+
+    //先缩小再放大动画
+    private fun onAnimator() {
+
+        val scaleX1Anim = ObjectAnimator.ofFloat(this,"scaleX",1f,0.8f)
+        val scaleY1Anim = ObjectAnimator.ofFloat(this,"scaleY",1f,0.8f)
+
+        val scaleX2Anim = ObjectAnimator.ofFloat(this,"scaleX",0.8f,1.0f)
+        val scaleY2Anim = ObjectAnimator.ofFloat(this,"scaleY",0.8f,1.0f)
+        scaleX2Anim.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationStart(animation: Animator?) {
+                super.onAnimationStart(animation)
+                isLikes = !isLikes
+                invalidate()
+            }
+        })
+
+        val animatorSet = AnimatorSet()
+        animatorSet.play(scaleX1Anim).with(scaleY1Anim).before(scaleX2Anim)
+
+        if(isLikes) {
+            animatorSet.play(scaleX2Anim).with(scaleY2Anim)
+        } else {
+            val circle = ObjectAnimator.ofFloat(this,"circle",1f,0f)
+            animatorSet.play(scaleX2Anim).with(scaleY2Anim).with(circle)
+        }
+        animatorSet.duration = 100
+        animatorSet.start()
+
+    }
+
+    private var circle = 1f
+    private fun setCircle(circle:Float) {
+        this.circle = circle
+        invalidate()
+    }
+    private fun getCircle():Float {
+        return circle
+    }
+
 
 }
