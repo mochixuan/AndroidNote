@@ -5,19 +5,18 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.wx.hencoder.utils.DisplayUtil
 
 
-class LikesTextView : View,View.OnClickListener {
+class LikesTextView : View{
 
     private var mPaint = Paint()
     private var isLikes: Boolean = false
     private var upNums:Int = 0
-    private var centerNums:Int = 9998
+    private var centerNums:Int = 0
+    private var initNums:Int = 0
     private var downNums: Int = 0
     private var scroll: Float = 0f
 
@@ -26,18 +25,68 @@ class LikesTextView : View,View.OnClickListener {
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs,0)
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        init()
-    }
-
-    private fun init() {
-        setOnClickListener(this)
-
         mPaint.textAlign = Paint.Align.RIGHT
-        mPaint.color = Color.parseColor("#ffcccccc")
-        mPaint.textSize = DisplayUtil.dpTopx(context,16f)
-
+        mPaint.isAntiAlias = true
     }
 
+    fun setTextColor(color: Int) {
+        mPaint.color = color
+    }
+    fun setTextSize(textSize: Float) {
+        mPaint.textSize = textSize
+    }
+    fun setCenterNums(centerNums:Int) {
+        this.centerNums = centerNums
+        initNums = centerNums
+    }
+    fun setIsLikes(isLikes: Boolean) {
+        this.isLikes = isLikes
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        //super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+
+        val specMode = MeasureSpec.getMode(widthMeasureSpec)
+        val specSize = MeasureSpec.getSize(widthMeasureSpec)
+        var realWidth = 0
+
+        when (specMode) {
+            //相当于wrap_content (等于或小于这个能够给予的最大值)
+            MeasureSpec.AT_MOST -> {
+                realWidth = Math.ceil(mPaint.measureText((centerNums+1).toString()).toDouble()).toInt()
+            }
+            //为math_parent或者固定值时
+            MeasureSpec.EXACTLY -> {
+                realWidth = specSize
+            }
+            //没有确定值或为0这个和EXACTLY一样处理一般，想要多大就多大
+            MeasureSpec.UNSPECIFIED -> {
+                realWidth = Math.ceil(mPaint.measureText((centerNums+1).toString()).toDouble()).toInt()
+            }
+        }
+
+        val specHeightMode = MeasureSpec.getMode(heightMeasureSpec)
+        val specHeightSize = MeasureSpec.getSize(heightMeasureSpec)
+        var realHeight = 0
+
+        when (specHeightMode) {
+            //相当于wrap_content (等于或小于这个能够给予的最大值)
+            MeasureSpec.AT_MOST -> {
+                realHeight = (-mPaint.ascent()-mPaint.descent()).toInt()
+            }
+            //为math_parent或者固定值时
+            MeasureSpec.EXACTLY -> {
+                realHeight = specHeightSize
+            }
+            //没有确定值或为0这个和EXACTLY一样处理一般，想要多大就多大
+            MeasureSpec.UNSPECIFIED -> {
+                realHeight = (-mPaint.ascent()-mPaint.descent()).toInt()
+            }
+        }
+
+        setMeasuredDimension(realWidth,realHeight)
+
+    }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -51,7 +100,7 @@ class LikesTextView : View,View.OnClickListener {
 
         canvas?.clipRect(0f, height/2f -textHeight, width.toFloat(), height/2f + textHeight)
 
-        val rightX = width/2f + mPaint.measureText(centerNums.toString())/2
+        val rightX = width/2f + mPaint.measureText(initNums.toString())/2
 
         val upY = height/2f + textHeight*0.5f - mPaint.fontSpacing + scroll*mPaint.fontSpacing
         val centerpPrefixY = height/2f + textHeight*0.5f
@@ -153,12 +202,11 @@ class LikesTextView : View,View.OnClickListener {
                 }
             }
         }
-
         return changeDiget
     }
 
     private var animator:ObjectAnimator? = null
-    private fun onAnimator() {
+    fun onAnimator() {
         if (animator != null && animator!!.isRunning) {
             animator!!.cancel()
         }
@@ -179,7 +227,7 @@ class LikesTextView : View,View.OnClickListener {
                 scroll = 0f
             }
         })
-        animator!!.duration = 100
+        animator!!.duration = 200
         animator!!.start()
     }
 
@@ -189,10 +237,6 @@ class LikesTextView : View,View.OnClickListener {
     }
     fun getScroll(): Float {
         return scroll
-    }
-
-    override fun onClick(p0: View?) {
-        onAnimator()
     }
 
 }

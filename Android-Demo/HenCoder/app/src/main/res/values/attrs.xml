@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LikesLayoutView">
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="isLikes" format="boolean"/>
+        <attr name="likesNum" format="integer"/>
+    </declare-styleable>
+
+</resources>
