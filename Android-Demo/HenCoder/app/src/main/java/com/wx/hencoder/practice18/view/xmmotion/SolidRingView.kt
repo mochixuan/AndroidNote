@@ -30,7 +30,6 @@ class SolidRingView : View {
         val ringX = measuredWidth/2f
         val ringY = measuredHeight/2f
         val ringR0 = Math.min(ringX,ringY)*0.6.toFloat()
-        val ringR1 = Math.min(ringX,ringY)*0.7.toFloat()
 
         //最内圆环虚线
         mPaint.style = Paint.Style.STROKE
