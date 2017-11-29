@@ -1,4 +1,4 @@
-## AndroidDemo (个人练习的Demo)#### 11.修改CrashUtil位置#### 10.学习指纹识别> 反正指纹拦截有点问题，有时间再学习#### 9.学习了下HenCoder> 讲的很细，而且有时候你不开始写都不知道，一些简单的东西可以写nb的东西，练习了一下，全程Kotlin![image](https://github.com/mochixuan/AndroidNote/blob/master/Android-Demo/MaterialDesign/MD-Demo1/img/xmment.gif)#### 8 UI>看了米家的首页头部不错，简单实现了一下
+## AndroidDemo (个人练习的Demo)#### 12.修改KeepAliveService位置#### 11.修改CrashUtil位置#### 10.学习指纹识别> 反正指纹拦截有点问题，有时间再学习#### 9.学习了下HenCoder> 讲的很细，而且有时候你不开始写都不知道，一些简单的东西可以写nb的东西，练习了一下，全程Kotlin![image](https://github.com/mochixuan/AndroidNote/blob/master/Android-Demo/MaterialDesign/MD-Demo1/img/xmment.gif)#### 8 UI>看了米家的首页头部不错，简单实现了一下
 ![image](https://github.com/mochixuan/170220AndroidDemo/blob/master/Android-Demo/MaterialDesign/MD-Demo1/img/xiaomi1.gif)![image](https://github.com/mochixuan/170220AndroidDemo/blob/master/Android-Demo/MaterialDesign/MD-Demo1/img/xiaomi2.gif)#### 7静默安装和卸载> 到目前位置搞过了Android 4.2.2(MTK) 4.4.2(T3) 6.0(T3)
 > 所以方法都是在拥有签名的情况下
 > 一段血泪史啊，写下经验
