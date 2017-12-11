@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ppdl.myapplication.MainActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_load"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="加载" />
+
+        <Button
+            android:id="@+id/btn_no_net"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="无网络加载" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_jump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查询页" />
+
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试1" />
+
+        <Button
+            android:id="@+id/btn_test1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试2" />
+
+    </LinearLayout>
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swip_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>
