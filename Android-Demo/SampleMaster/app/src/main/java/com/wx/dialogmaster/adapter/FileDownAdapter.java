@@ -1,6 +1,6 @@
 package com.wx.dialogmaster.adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.wx.dialogmaster.R;
 import com.wx.dialogmaster.databinding.ItemFileBinding;
 import com.wx.dialogmaster.model.FileBaseUiModel;
+import com.wx.dialogmaster.model.FileDownListener;
 import com.wx.dialogmaster.model.FileModel;
 
 import java.util.List;
@@ -19,11 +20,15 @@ import java.util.List;
 public class FileDownAdapter extends RecyclerView.Adapter<BaseViewHolder>{
 
     private List<FileModel> mFileModels;
-    private Context mContext;
+    private Activity mActivity;
+    private FileDownListener mFileDownListener;
+
+    public FileDownAdapter(Activity activity) {
+        this.mActivity = activity;
+    }
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        this.mContext = parent.getContext();
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_file,parent,false);
         BaseViewHolder viewHolder = new BaseViewHolder(binding.getRoot());
         viewHolder.setBinding(binding);
@@ -35,7 +40,8 @@ public class FileDownAdapter extends RecyclerView.Adapter<BaseViewHolder>{
         ItemFileBinding binding = (ItemFileBinding) holder.getBinding();
         FileModel fileModel = mFileModels.get(position);
         final FileBaseUiModel baseUiModel = fileModel.getUiModel();
-        Glide.with(mContext).load(fileModel.getDownModel().getFileUrl()).into(binding.ivImg);
+        String tag  = fileModel.getDownModel().getFileUrl();
+        Glide.with(mActivity).load(fileModel.getDownModel().getFileImg()).asBitmap().error(R.mipmap.ic_launcher).into(binding.ivImg);
         binding.tvTitle.setText(baseUiModel.getTitle());
         binding.tvDescri.setText(baseUiModel.getDescri());
         binding.progress.setProgress(baseUiModel.getProgress());
@@ -43,11 +49,12 @@ public class FileDownAdapter extends RecyclerView.Adapter<BaseViewHolder>{
         binding.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (baseUiModel.getFileListener() != null) {
-                    baseUiModel.getFileListener().clickBtn(position);
+                if (mFileDownListener != null) {
+                    mFileDownListener.clickBtn(position);
                 }
             }
         });
+
     }
 
     public void setData(List<FileModel> fileModels,boolean isRefresh) {
@@ -61,6 +68,10 @@ public class FileDownAdapter extends RecyclerView.Adapter<BaseViewHolder>{
         if (isRefresh) {
             notifyDataSetChanged();
         }
+    }
+
+    public void setFileDownListener(FileDownListener listener) {
+        this.mFileDownListener = listener;
     }
 
     @Override

@@ -2,7 +2,8 @@ package com.wx.dialogmaster
 
 import android.databinding.ViewDataBinding
 import com.wx.dialogmaster.activity.MaterialDesignActivity
-import com.wx.dialogmaster.activity.Retrofit2Activity
+import com.wx.dialogmaster.activity.OkgoBaseActivity
+import com.wx.dialogmaster.activity.OkgoDownActivity
 import com.wx.dialogmaster.base.BaseActivity
 import com.wx.dialogmaster.databinding.ActivityMainBinding
 
@@ -24,7 +25,11 @@ class MainActivity : BaseActivity() {
         }
 
         binding.btn2.setOnClickListener {
-            openActivity(Retrofit2Activity::class.java)
+            openActivity(OkgoBaseActivity::class.java)
+        }
+
+        binding.btn3.setOnClickListener {
+            openActivity(OkgoDownActivity::class.java)
         }
 
     }

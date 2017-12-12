@@ -19,6 +19,7 @@
             android:text="标题"
             app:layout_constraintLeft_toRightOf="@id/iv_img"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -26,6 +27,7 @@
         <TextView
             android:id="@+id/tv_descri"
             android:text="描述"
+            android:layout_marginLeft="10dp"
             app:layout_constraintLeft_toRightOf="@id/iv_img"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             android:layout_marginTop="2dp"
@@ -34,10 +36,13 @@
 
         <com.daimajia.numberprogressbar.NumberProgressBar
             android:id="@+id/progress"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_descri"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="120dp"
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button

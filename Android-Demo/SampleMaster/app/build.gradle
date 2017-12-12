@@ -43,12 +43,17 @@ dependencies {
     }
     implementation 'com.android.support:support-v4:27.0.1'
     compile 'com.daimajia.numberprogressbar:library:1.4@aar'
-    //okhttp-OkGo
-    //compile 'com.lzy.net:okgo:3.0.4'
     implementation 'com.android.support:recyclerview-v7:27.0.2'
+    //okhttp-OkGo
+    compile 'com.lzy.net:okgo:3.0.4'
+    compile 'com.lzy.net:okserver:2.0.5'
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.4.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //rxpermission2
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    //rxjava2.x
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.7'
 }
 repositories {
     mavenCentral()

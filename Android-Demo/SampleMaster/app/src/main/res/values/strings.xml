@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DialogMaster</string>
+    <string name="app_name">SampleMaster</string>
     <string name="dont_ask_again">不再询问</string>
 
 </resources>
