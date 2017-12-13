@@ -34,7 +34,7 @@ public abstract class BaseActivity : AppCompatActivity(){
 
     private fun initPermission() {
         val rxPermission = RxPermissions(this)
-        rxPermission.request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(Consumer { granted-> if (!granted) finish() })
+        rxPermission.request(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA).subscribe(Consumer { granted-> if (!granted) finish() })
     }
 
     fun openActivity(activity: Class<out Activity>) {

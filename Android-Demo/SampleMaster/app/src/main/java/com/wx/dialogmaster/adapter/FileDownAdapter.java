@@ -17,7 +17,7 @@ import com.wx.dialogmaster.model.FileModel;
 
 import java.util.List;
 
-public class FileDownAdapter extends RecyclerView.Adapter<BaseViewHolder>{
+public class FileDownAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<FileModel> mFileModels;
     private Activity mActivity;
