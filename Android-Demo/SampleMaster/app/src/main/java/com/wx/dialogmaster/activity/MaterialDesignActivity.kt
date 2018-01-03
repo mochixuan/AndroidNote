@@ -115,6 +115,9 @@ class MaterialDesignActivity : BaseActivity() {
 
         // When the loop exits, set the dialog content to a string that equals "Done"
         dialog.setContent("完成")*/
+
+
+
     }
 
 }

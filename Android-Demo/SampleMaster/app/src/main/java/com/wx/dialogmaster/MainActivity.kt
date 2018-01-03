@@ -38,6 +38,14 @@ class MainActivity : BaseActivity() {
             openActivity(OkHttpActivity::class.java)
         }
 
+        binding.btn6.setOnClickListener {
+            openActivity(KeyControllActivity::class.java)
+        }
+
+        binding.btn7.setOnClickListener {
+            openActivity(GaodeActivity::class.java)
+        }
+
     }
 
 }
