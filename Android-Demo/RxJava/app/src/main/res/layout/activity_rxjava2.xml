@@ -42,7 +42,7 @@
 
         <Button
             android:id="@+id/btn5"
-            android:text="5.zip"
+            android:text="5.scan"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
