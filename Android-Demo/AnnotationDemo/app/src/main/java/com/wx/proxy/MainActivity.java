@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
+    
     public void openActivity(Class<? extends Activity> aClass) {
         startActivity(new Intent(this,aClass));
     }

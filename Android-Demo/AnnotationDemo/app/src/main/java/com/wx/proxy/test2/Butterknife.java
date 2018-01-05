@@ -9,7 +9,6 @@ public class Butterknife {
 
     //getFields()只能获取public的字段，包括父类的
     //getDeclaredFields()只能获取自己声明的各种字段，包括public，protected，private
-    //公司机器不支持而且模拟器也不支持5.0以下的
 
     public static void inject(Activity activity) {
         bindContentView(activity);

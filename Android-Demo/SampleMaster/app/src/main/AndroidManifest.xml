@@ -41,7 +41,8 @@
         <activity android:name=".activity.Android7Activity" />
         <activity android:name=".activity.OkHttpActivity" />
         <activity android:name=".activity.KeyControllActivity" />
-        <activity android:name=".activity.GaodeActivity"></activity>
+        <activity android:name=".activity.GaodeActivity" />
+        <activity android:name=".activity.StreamActivity"></activity>
     </application>
 
 </manifest>

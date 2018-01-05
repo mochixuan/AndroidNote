@@ -1,6 +1,7 @@
 package com.wx.text.test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Map.Entry;
@@ -62,6 +63,12 @@ public class test {
 		for(Entry<Integer, String> entry : tmap.entrySet()) {
 		    System.out.println(entry.getKey() + ": " + entry.getValue());
 		}
+		
+		Arrays.asList("a","b","c").forEach(e->{
+			
+		});
+		
+		Arrays.asList("b","a","c","f","e").sort((e1,e2) -> e1.compareTo(e2));
 	
 	}
 	
