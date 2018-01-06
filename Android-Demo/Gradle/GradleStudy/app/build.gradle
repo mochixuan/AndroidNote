@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    def APP_NAME = "GradleStyle"
+    defaultConfig {
+        applicationId "com.ppdl.gradlestudy"
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        flavorDimensions  "1.0" //解决维度问题
+        manifestPlaceholders = [CHANNEL_NAME: 'mochixuan'] //默认渠道
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    productFlavors {
+        xiaomi {
+            applicationId "com.ppdl.gradlestudy.xiaomi"
+        }
+        huawei {
+            applicationId "com.ppdl.gradlestudy.huawei"
+        }
+        /*yijia {}
+        vivo {}
+        oppo {}
+        wandouji {}
+        qh360 {}
+        yingyongbao {}*/
+    }
+
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [CHANNEL_NAME: name]
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs 'libs'
+        }
+        xiaomi {
+            res.srcDirs 'src/main/res-xiaomi'
+            java.srcDirs 'src/main/java-xiaomi'
+        }
+        huawei {
+            res.srcDirs 'src/main/res-huawei'
+            java.srcDirs 'src/main/java-huawei'
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('keystore/keystore.jks')
+            storePassword '123456'
+            keyAlias 'wx'
+            keyPassword '123456'
+        }
+    }
+    buildTypes {
+        debug {
+            buildConfigField('String', 'Author', '\"mochixuan\"')
+        }
+        release {
+            minifyEnabled false
+            buildConfigField('String', 'Author', '\"wangxuan\"')
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${APP_NAME}_${variant.productFlavors[0].name}_${defaultConfig.versionName}.apk"
+                }
+            }
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
