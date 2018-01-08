@@ -4,7 +4,6 @@ import android.databinding.ViewDataBinding
 import com.wx.dialogmaster.R
 import com.wx.dialogmaster.base.BaseActivity
 import com.wx.dialogmaster.databinding.ActivityStreamBinding
-import com.wx.dialogmaster.model.DefaultFactory
 
 class StreamActivity : BaseActivity() {
 
@@ -21,16 +20,6 @@ class StreamActivity : BaseActivity() {
         binding.btn1.setOnClickListener {
 
         }
-
-        val a = object : DefaultFactory{
-            override fun getAge() {
-
-            }
-            override fun getName(): String {
-                return super.getName()
-            }
-        }
-        a.getAge();
 
     }
 
