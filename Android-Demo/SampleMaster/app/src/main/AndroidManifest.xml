@@ -45,12 +45,16 @@
         <activity android:name=".activity1.OneActivity" />
         <activity
             android:name=".activity1.TwoActivity"
-            android:parentActivityName="com.wx.dialogmaster.MainActivity" >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.wx.dialogmaster.MainActivity" />
         </activity>
+
         <service android:name=".service.Test1Service" />
+
+        <activity android:name=".fragment.FragmentTestActivity" />
+        <activity android:name=".activity1.GaoDe1Activity"></activity>
     </application>
 
 </manifest>

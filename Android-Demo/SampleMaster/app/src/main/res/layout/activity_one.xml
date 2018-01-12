@@ -7,6 +7,7 @@
     tools:context="com.wx.dialogmaster.activity1.OneActivity">
 
     <TextView
+        android:id="@+id/tv_text"
         android:textSize="24sp"
         android:text="OneActivity"
         android:textColor="@color/colorAccent"

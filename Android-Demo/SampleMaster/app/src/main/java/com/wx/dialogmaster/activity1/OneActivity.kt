@@ -27,7 +27,7 @@ class OneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_one)
-        Log.d(TAG,">>>>>>>>>>onCreate")
+        Log.d(TAG,">>>>>>>>>>onCreate"+savedInstanceState)
 
         findViewById<Button>(R.id.btn).setOnClickListener {
             val intent = Intent(this,TwoActivity::class.java)

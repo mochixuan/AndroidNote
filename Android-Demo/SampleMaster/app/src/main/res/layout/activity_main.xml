@@ -57,8 +57,22 @@
 
         <Button
             android:id="@+id/btn_8"
-            app:layout_constraintTop_toBottomOf="@+id/btn_6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_7"
             android:text="生命周期"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_9"
+            app:layout_constraintTop_toBottomOf="@+id/btn_8"
+            android:text="Fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_10"
+            app:layout_constraintTop_toBottomOf="@+id/btn_9"
+            android:text="TestDraw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

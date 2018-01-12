@@ -123,10 +123,10 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
     //接收--观察者
     Subscriber<String> subscriber1=new Subscriber<String>() {
 
-        /*@Override
+        @Override
         public void onStart() {
             super.onStart();
-        }*/
+        }
 
         @Override
         public void onCompleted() {

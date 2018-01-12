@@ -2,9 +2,11 @@ package com.wx.dialogmaster
 
 import android.databinding.ViewDataBinding
 import com.wx.dialogmaster.activity.*
+import com.wx.dialogmaster.activity1.GaoDe1Activity
 import com.wx.dialogmaster.activity1.OneActivity
 import com.wx.dialogmaster.base.BaseActivity
 import com.wx.dialogmaster.databinding.ActivityMainBinding
+import com.wx.dialogmaster.fragment.FragmentTestActivity
 
 class MainActivity : BaseActivity() {
 
@@ -49,6 +51,14 @@ class MainActivity : BaseActivity() {
 
         binding.btn8.setOnClickListener {
             openActivity(OneActivity::class.java)
+        }
+
+        binding.btn9.setOnClickListener {
+            openActivity(FragmentTestActivity::class.java)
+        }
+
+        binding.btn10.setOnClickListener {
+            openActivity(GaoDe1Activity::class.java)
         }
 
     }

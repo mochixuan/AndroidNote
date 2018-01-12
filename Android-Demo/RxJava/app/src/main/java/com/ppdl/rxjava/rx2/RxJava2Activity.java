@@ -75,6 +75,7 @@ public class RxJava2Activity extends BaseActivty implements View.OnClickListener
                 scan();
                 break;
             case R.id.btn6:
+                empty();
                 break;
         }
     }
@@ -159,6 +160,29 @@ public class RxJava2Activity extends BaseActivty implements View.OnClickListener
                 System.out.println("==================onComplete=======================");
             }
         };
+
+        Observer observer = new Observer() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Object o) {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+
         flowable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
@@ -240,6 +264,60 @@ public class RxJava2Activity extends BaseActivty implements View.OnClickListener
                         return null;
                     }
                 });
+    }
+
+    private void empty() {
+        Observable.empty()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        Log.d(TAG,"=======================>>"+o);
+                    }
+                });
+
+        Observer<Integer> observer = new Observer<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+        org.reactivestreams.Subscriber<Integer> subscriber = new org.reactivestreams.Subscriber<Integer>() {
+            @Override
+            public void onSubscribe(Subscription s) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+
+            }
+
+            @Override
+            public void onError(Throwable t) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
     }
 
 }
