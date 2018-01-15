@@ -7,9 +7,9 @@ import com.ppdl.rxjava.base.Base2Activty;
 import com.ppdl.rxjava.rx.FiveActivity;
 import com.ppdl.rxjava.rx.FourActivity;
 import com.ppdl.rxjava.rx.RxBusActivity;
+import com.ppdl.rxjava.rx.SecondActivity;
 import com.ppdl.rxjava.rx.ThreeActivity;
 import com.ppdl.rxjava.rx2.RxJava2Activity;
-import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.concurrent.TimeUnit;
 
@@ -53,8 +53,8 @@ public class MainActivity extends Base2Activty implements View.OnClickListener{
         switch (v.getId()){
             case R.id.btn1:
                 //test1();
-                test(this.bindUntilEvent(ActivityEvent.STOP));
-                //openActivity(SecondActivity.class);
+                //test(this.bindUntilEvent(ActivityEvent.STOP));
+                openActivity(SecondActivity.class);
                 break;
             case R.id.btn2:
                 openActivity(FourActivity.class);

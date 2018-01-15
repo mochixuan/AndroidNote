@@ -86,6 +86,12 @@
 
 30 Debounce() : 等多少秒后如果没有数据就会执行，如果在时间之内就抛掉之前的数据
 
+31 Scan():
+
+32 Distinct(): 只允许没有发射过的数据发射，可以定义过滤规则
+
+33
+
 一.SecondActivity里的笔记
 
 1.一个Observable可以发出零个或者多个事件，知道结束或者出错。每发出一个事件，就会调用它Subscriber的onNext方法，最后调用Subscriber.onNext()或者Subscriber.onError()结束。
