@@ -46,8 +46,8 @@ public class MessengerActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setAction("com.wx.ipcmaster.messenger");
-                intent.setPackage("com.wx.ipcmaster");
+                intent.setAction("com.wx.com.wx.com.wx.ipcmaster.messenger");
+                intent.setPackage("com.wx.com.wx.com.wx.ipcmaster");
                 bindService(intent,mServiceConnection, Context.BIND_AUTO_CREATE);
             }
         });

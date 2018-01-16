@@ -24,7 +24,15 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.wx.ipcmaster.messenger"/>
+                <action android:name="com.wx.ipcmaster.messenger" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.AidlService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.wx.ipcmaster.aidl" />
             </intent-filter>
         </service>
     </application>

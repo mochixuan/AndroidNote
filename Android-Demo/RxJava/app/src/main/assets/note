@@ -90,7 +90,7 @@
 
 32 Distinct(): 只允许没有发射过的数据发射，可以定义过滤规则
 
-33
+33 throttleFirst(): 防止按钮重复点击
 
 一.SecondActivity里的笔记
 

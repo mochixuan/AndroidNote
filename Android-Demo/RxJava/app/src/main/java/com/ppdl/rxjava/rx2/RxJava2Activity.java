@@ -320,4 +320,16 @@ public class RxJava2Activity extends BaseActivty implements View.OnClickListener
         };
     }
 
+    private void combineLatest() {
+        Observable.just("")
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+
+                    }
+                });
+    }
+
 }
