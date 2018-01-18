@@ -169,7 +169,10 @@ public class MainActivity extends Base2Activty implements View.OnClickListener{
     }
 
     private void subscriber() {
-        getObserval().subscribe(new Consumer<Integer>() {
+        getObserval()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
             @Override
             public void accept(@NonNull Integer integer) throws Exception {
                 System.out.println("=============================================2222");
