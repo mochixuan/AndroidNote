@@ -1,0 +1,39 @@
+### 一.PopupWindow
+
+```
+注意点一：
+public PopupWindow(View contentView, int width, int height, boolean focusable)
+看这里有四个构造函数，但要生成一个PopupWindow最基本的三个条件是一定要设置的：View contentView，int width, int height 
+focusable 单机外面是否自动消失 获取外界焦点
+
+//这个函数不只能设置背景……，因为你加上它之后，setOutsideTouchable()才会生效;
+//下面两个一起使用，但点击返回是可以先取消，不退出，而且当点击外部时触摸事件不会传到外部，重点
+mPopWindow.setBackgroundDrawable(new BitmapDrawable());  
+mPopWindow.setOutsideTouchable(true);
+
+
+注意点二：
+相对某个控件的位置（正左下方），无偏移  
+showAsDropDown(View anchor)：  
+//相对某个控件的位置，有偏移;xoff表示x轴的偏移，正值表示向左，负值表示向右；yoff表示相对y轴的偏移，正值是向下，负值是向上；  
+showAsDropDown(View anchor, int xoff, int yoff)：  
+//相对于父控件的位置（例如正中央Gravity.CENTER，下方Gravity.BOTTOM等），可以设置偏移或无偏移  
+showAtLocation(View parent, int gravity, int x, int y)：
+
+例子：
+PopupWindow popupWindow = new PopupWindow(
+	childBinding.getRoot(),
+	LinearLayout.LayoutParams.WRAP_CONTENT,
+	LinearLayout.LayoutParams.WRAP_CONTENT,
+	true
+);
+popupWindow.setContentView(childBinding.getRoot());
+//接管取消
+popupWindow.setBackgroundDrawable(new BitmapDrawable());
+popupWindow.setOutsideTouchable(true);
+//设置动画
+popupWindow.setAnimationStyle(R.style.PopUpTheme);
+//显示
+popupWindow.showAsDropDown(parent/view);
+
+```
