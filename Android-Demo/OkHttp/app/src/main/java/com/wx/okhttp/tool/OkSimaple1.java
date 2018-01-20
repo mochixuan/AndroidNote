@@ -3,6 +3,10 @@ package com.wx.okhttp.tool;
 import android.content.Context;
 import android.util.Log;
 
+import com.wx.okhttp.tool.cookies.CookiesManager;
+import com.wx.okhttp.tool.interceptor.CacheInterceptor;
+import com.wx.okhttp.tool.interceptor.LoggingInterceptor;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -321,6 +325,7 @@ public class OkSimaple1 {
         }
     }
 
+    //http://blog.csdn.net/briblue/article/details/52920531
     //以上如果cache没有过去会直接返回cache而不会发起网络请求，若过期会自动发起网络请求。
     public void cacheRequest(String url, Context context,final int index) {
         CacheControl.Builder builder = new CacheControl.Builder();
@@ -328,9 +333,9 @@ public class OkSimaple1 {
         //builder.noStore();      //不使用缓存，也不存储缓存
         //builder.onlyIfCached(); //只使用缓存
         //builder.noTransform();  //禁止转码
-        //builder.maxAge(20, TimeUnit.SECONDS); //指示客户机可以接收生存期不大于指定时间的响应。已这个时间为准，当缓存时间大于这个时间则重新请求数据
-        //builder.maxStale(10, TimeUnit.SECONDS);   //指示客户机可以接收超出超时期间的响应消息
-        builder.minFresh(10, TimeUnit.SECONDS);   //指示客户机可以接收响应时间小于当前时间加上指定时间的响应。
+        builder.maxAge(10, TimeUnit.SECONDS); //指示客户机可以接收生存期不大于指定时间的响应。已这个时间为准，当缓存时间大于这个时间则重新请求数据
+        //builder.maxStale(20, TimeUnit.SECONDS);   //指示客户机可以接收超出超时期间的响应消息
+        //builder.minFresh(20, TimeUnit.SECONDS);   //指示客户机可以接收响应时间小于当前时间加上指定时间的响应。
         //CacheControl.FORCE_CACHE;     //仅仅使用缓存
         //CacheControl.FORCE_NETWORK;   // 仅仅使用网络
 
@@ -371,7 +376,7 @@ public class OkSimaple1 {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d(TAG,index+" onResponse: "+response.code()+" "+response.body().string());
+                Log.d(TAG,index+" onResponse: "+response.code()+" cache:"+response.cacheControl()+"  network:"+response.networkResponse()+"  "+response.body().string());
             }
         });
         //call.cancel();
@@ -379,5 +384,86 @@ public class OkSimaple1 {
     }
 
 
+    /*private CookieJar mCookieJar = new CookieJar() {
+        private Map<String,List<Cookie>> cookieMap = new HashMap<>();
+
+        @Override
+        public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+            cookieMap.put(url.host(),cookies);
+            for (int i = 0;i<cookies.size();i++) {
+                Cookie cookie = cookies.get(i);
+                Log.d(TAG,"======saveCookie>> path:"+cookie.path()+"  domain:"+cookie.domain()+"  name:"+cookie.name()+"  value:"+cookie.value());
+            }
+            Log.d(TAG,"==========save>>"+url.host()+"  "+cookies.size());
+        }
+
+        @Override
+        public List<Cookie> loadForRequest(HttpUrl url) {
+            List<Cookie> cookies = cookieMap.get(url.host());
+            if (cookies == null) {
+                cookies = new ArrayList<>();
+                Log.d(TAG,"==========load>>"+url.host()+"  null");
+            } else {
+                Log.d(TAG,"==========load>>"+url.host()+"  "+cookies.size());
+            }
+            for (int i = 0;i<cookies.size();i++) {
+                Cookie cookie = cookies.get(i);
+                Log.d(TAG,"======loadCookie>> path:"+cookie.path()+"  domain:"+cookie.domain()+"  name:"+cookie.name()+"  value:"+cookie.value());
+            }
+            return cookies;
+        }
+    };*/
+
+    public void cookie(String url ,Context context,HashMap<String,String> params,final int index) {
+
+        FormBody.Builder formBuidler = new FormBody.Builder();
+        for (String key: params.keySet()) {
+            formBuidler.add(key,params.get(key));
+        }
+        final Request request = new Request.Builder()
+                .url(url)
+                .post(formBuidler.build())
+                .build();
+        mOkHttpClient.newBuilder()
+                .cookieJar(new CookiesManager(context))
+                .build()
+                .newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.w(TAG,index+" onFailure: ");
+                    }
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.d(TAG,"=======>>"+request.headers().get("Cookie")+" :  "+response.header("Cookie")+"  :  "+response.body().string());
+                    }
+                });
+
+    }
+
+    public void interceptor(String url, Context context,final int index) {
+        CacheControl.Builder builder = new CacheControl.Builder();
+        builder.maxAge(10, TimeUnit.SECONDS);
+        final Request request = new Request.Builder().cacheControl(builder.build()).url(url).build();
+
+        mOkHttpClient.newBuilder()
+                //设置缓存大小和位置
+                .cache(new Cache(context.getCacheDir(),10*1024*1024))
+                .addInterceptor(new LoggingInterceptor()) //请求时先进过
+                //设置网络过滤器
+                .addNetworkInterceptor(new CacheInterceptor()) //相应时先进过
+                .retryOnConnectionFailure(true) //连接失败后重试
+                .build()
+                .newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.w(TAG,index+" onFailure: ");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.d(TAG,"=========>>"+response.body().string());
+                    }
+                });
+    }
 
 }

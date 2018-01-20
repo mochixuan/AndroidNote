@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity {
     private static final String FILE_QQ_URL = "http://imtt.dd.qq.com/16891/33757913E2C5D213D1A980EE55FF19C0.apk?fsname=com.tencent.qqmusic_7.9.5.16_763.apk&csr=1bbd";
     private static final String FILE_FRIEDRICE_URL = "http://imtt.dd.qq.com/16891/DCF24BFF065838E75D51F6645595B56C.apk?fsname=com.wx.cookbook_3.0_3.apk&csr=1bbd";
     private static final String FILE_UPLOAD_URL1 = "https://qiniu-storage.pgyer.com/apiv1/app/upload"; //蒲公英接口
+    private static final String ZHIHU_LOGIN_URL = "https://www.zhihu.com/login/phone_num";
 
     @Override
     public int getLayoutId() {
@@ -99,6 +100,25 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 OkSimaple1.getInstance().cacheRequest(WEIXIN_URL,MainActivity.this,0);
+            }
+        });
+        binding.btnCookie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //模拟知乎登入
+                HashMap<String,String> params = new HashMap<>();
+                params.put("_xsrf","bf284aba4cc706ebfc5ebcba1c4f97fc");
+                params.put("password","w123456789");
+                params.put("phone_num","18296154769");
+                params.put("remember_me","true");
+                params.put("captcha_type","cn");
+                OkSimaple1.getInstance().cookie(ZHIHU_LOGIN_URL,MainActivity.this,params,0);
+            }
+        });
+        binding.btnInterceptor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OkSimaple1.getInstance().interceptor(WEIXIN_URL,MainActivity.this,0);
             }
         });
 
