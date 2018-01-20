@@ -1,0 +1,147 @@
+### 通知
+
+1. 方法
+```
+setSmallIcon():  小图标 通知栏的右下角
+setLargeIcon()： 大图标 通知了的左侧
+setContentTitle(): 标题 (第一行)
+setContentText():  内容 (第二行)
+setSubText(): 附加内容(第三行) 在低版本上不显示，比如4.0系统
+
+setContentInfo(): 通知栏的右下角显示一些信息
+setNumber(): 在右下角显示消息数(和上面位置重复互斥关系)
+
+
+NotificationCompat.InboxStyle //定义下面的
+NotificationCompat.BigTextStyle //定义下面的
+setStyle()可以设置显示多行数据。可以显示最多六行
+
+setSummaryText(): 最下面加一行数据
+setProgress(): 设置进度，第三个参数试一下就知道差异
+setOngoing(): 是否滑动删除
+setWhen(): 设置时间，通常可以不设置
+setShowWhen(false): 设置是否显示时间
+setAutoCancel()： 设置自动取消
+cancel(int id)：取消通知,通过 NotificationManager
+cancelAll()： 取消所以通知
+setDefaults(): 调用系统默认响铃,设置此属性后setSound()会无效
+setSound(): 调用系统多媒体裤内的铃声
+setLights(0xFF0000, 3000, 3000): ledARGB 表示灯光颜色、 ledOnMS 亮持续时间、ledOffMS 暗的时间并不是所有颜色都被支持 个人感觉没什么用
+
+addAction(): 可以添加选项，但有些手机无效如小米6
+//小米手机里要进入通知设置设置为重要消息才会有效
+
+setFullScreenIntent() 很多手机直接跳了，没有显示 //要去系统设置里面设置允许横幅
+
+Android 5.0(API level 21)开始，通知可以显示在锁屏上.
+VISIBILITY_PRIVATE : 显示基本信息，如通知的图标，但隐藏通知的全部内容
+VISIBILITY_PUBLIC : 显示通知的全部内容
+VISIBILITY_SECRET : 不显示任何内容，包括图标
+setVisibility()
+
+```
+2. 创建
+```
+Notification 的创建主要涉及到 Notification.Builder 、 Notification 、 NotificationManager 。
+1. Notification.Builer : 使用建造者模式构建 Notification 对象。由于 Notification.Builder 仅支持 Android 4.1及之后的版本，为了解决兼容性问题， Google 在 Android Support v4 中加入了 NotificationCompat.Builder 类。对于某些在 Android 4.1 之后才特性，即使 NotificationCompat.Builder 支持该方法，在之前的版本中也不能运行。点我 查看更多关于 Notification 兼容性问题处理。文中使用的都是 NotificationCompat。
+2. Notification : 通知对应类，保存通知相关的数据。NotificationManager 向系统发送通知时会用到。
+3. NotificationManager : NotificationManager 是通知管理类，它是一个系统服务。调用 NotificationManager 的 notify() 方法可以向系统发送通知。
+
+```
+
+3. PendingIntent
+```
+PendingIntent 是一种特殊的 Intent ，字面意思可以解释为延迟的 Intent ，用于在某个事件结束后执行特定的 Action 。
+从上面带 Action 的通知也能验证这一点，当用户点击通知时，才会执行。
+PendingIntent 是 Android 系统管理并持有的用于描述和获取原始数据的对象的标志(引用)。
+
+三个获取方法
+获取一个用于启动 Activity 的 PendingIntent 对象
+public static PendingIntent getActivity(Context context, int requestCode, Intent intent, int flags);
+获取一个用于启动 Service 的 PendingIntent 对象
+public static PendingIntent getService(Context context, int requestCode, Intent intent, int flags);
+获取一个用于向 BroadcastReceiver 广播的 PendingIntent 对象
+public static PendingIntent getBroadcast(Context context, int requestCode, Intent intent, int flags)
+
+PendingIntent 具有以下几种 flag：
+FLAG_CANCEL_CURRENT:
+如果当前系统中已经存在一个相同的 PendingIntent 对象，那么就将先将已有的 PendingIntent 取消，然后重新生成一个 PendingIntent 对象。
+FLAG_NO_CREATE:
+如果当前系统中不存在相同的 PendingIntent 对象，系统将不会创建该 PendingIntent 对象而是直接返回 null 。
+FLAG_ONE_SHOT:
+该 PendingIntent 只作用一次。
+FLAG_UPDATE_CURRENT:
+如果系统中已存在该 PendingIntent 对象，那么系统将保留该 PendingIntent 对象，
+但是会使用新的 Intent 来更新之前 PendingIntent 中的 Intent 对象数据，例如更新 Intent 中的 Extras 。
+
+```
+
+4. 设置通知效果
+```
+Notification 有震动、响铃、呼吸灯三种响铃效果，可以通过 setDefaults(int defualts) 方法来设置。 Default 属性有以下四种，一旦设置了 Default 效果，自定义的效果就会失效。楼主在这里踩了坑，愣是调了半天没找到为什么自定义效果会消.
+//设置系统默认提醒效果，一旦设置默认提醒效果，则自定义的提醒效果会全部失效。具体可看源码
+//添加默认震动效果,需要申请震动权限
+//<uses-permission android:name="android.permission.VIBRATE" />
+Notification.DEFAULT_VIBRATE
+//添加系统默认声音效果，设置此值后，调用setSound()设置自定义声音无效
+Notification.DEFAULT_SOUND
+//添加默认呼吸灯效果，使用时须与 Notification.FLAG_SHOW_LIGHTS 结合使用，否则无效
+Notification.DEFAULT_LIGHTS
+//添加上述三种默认提醒效果
+Notification.DEFAULT_ALL
+
+```
+
+5. FLAG设置
+```
+//提醒效果常用 Flag
+//三色灯提醒，在使用三色灯提醒时候必须加该标志符
+Notification.FLAG_SHOW_LIGHTS
+//发起正在运行事件（活动中）
+Notification.FLAG_ONGOING_EVENT
+//让声音、振动无限循环，直到用户响应 （取消或者打开）
+Notification.FLAG_INSISTENT
+//发起Notification后，铃声和震动均只执行一次
+Notification.FLAG_ONLY_ALERT_ONCE
+//用户单击通知后自动消失
+Notification.FLAG_AUTO_CANCEL
+//只有调用NotificationManager.cancel()时才会清除
+Notification.FLAG_NO_CLEAR
+//表示正在运行的服务
+Notification.FLAG_FOREGROUND_SERVICE
+```
+
+6. 注意项
+```
+1. ID相同时替换
+
+```
+
+6.申请悬浮窗功能
+```
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+private void settingOverlay() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (! Settings.canDrawOverlays(MainActivity.this)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent,10);
+            }
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (requestCode == 10) {
+                if (!Settings.canDrawOverlays(this)) {
+                    Toast.makeText(MainActivity.this,"not granted",Toast.LENGTH_SHORT);
+                }
+            }
+        }
+    }
+
+```

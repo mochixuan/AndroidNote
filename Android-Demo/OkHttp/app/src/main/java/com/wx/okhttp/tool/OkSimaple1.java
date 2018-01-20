@@ -1,5 +1,6 @@
 package com.wx.okhttp.tool;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.io.File;
@@ -10,8 +11,12 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Authenticator;
+import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Credentials;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -19,6 +24,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.Route;
+import okio.Buffer;
+import okio.BufferedSink;
+import okio.Okio;
+import okio.Source;
 
 /**
  * Created by wangxuan on 2018/1/17.
@@ -151,7 +161,7 @@ public class OkSimaple1 {
         });
     }
 
-    //上传文件
+    //上传文件 //测试https://www.pgyer.com/doc/api#uploadApp
     public void uploadFile(String url, HashMap<String,Object> params, final int index) {
         MultipartBody.Builder builder = new MultipartBody.Builder();
         builder.setType(MultipartBody.FORM);
@@ -163,7 +173,8 @@ public class OkSimaple1 {
                 } else {
                     File file = (File) object;
                     RequestBody requestBody = RequestBody.create(
-                            MediaType.parse("text/x-markdown; charset=utf-8"),//和服务器要相同
+                            MediaType.parse("multipart/form-data"), //蒲公英规定的
+                            //MediaType.parse("text/x-markdown; charset=utf-8"),//和服务器要相同
                             //MediaType.parse("application/octet-stream")
                             file
                     );
@@ -174,7 +185,7 @@ public class OkSimaple1 {
             }
         }
 
-        Request request = getRequestBuilder().post(builder.build()).build();
+        Request request = getRequestBuilder().url(url).post(builder.build()).build();
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -186,6 +197,73 @@ public class OkSimaple1 {
                 Log.d(TAG,index+" onResponse: "+response.body().string());
             }
         });
+    }
+
+    //文件上传带进度的
+    public void uploadProgressFile(String url, HashMap<String,Object> params, final int index) {
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.setType(MultipartBody.FORM);
+        for (String key : params.keySet()) {
+            try {
+                Object object = params.get(key);
+                if (!(object instanceof File)) {
+                    builder.addFormDataPart(key, (String) params.get(key));
+                } else {
+                    File file = (File) object;
+                    RequestBody requestBody = createProgressRequestBody(MediaType.parse("multipart/form-data"),file);
+                    builder.addFormDataPart(key,file.getName(),requestBody);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        Request request = getRequestBuilder().url(url).post(builder.build()).build();
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.w(TAG,index+" onFailure: ");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG,index+" onResponse: "+response.body().string());
+            }
+        });
+    }
+
+    private RequestBody createProgressRequestBody(final MediaType mediaType, final File file) {
+        RequestBody requestBody = new RequestBody() {
+
+            @Override
+            public MediaType contentType() {
+                return mediaType;
+            }
+
+            @Override
+            public long contentLength() throws IOException {
+                return file.length();
+            }
+
+            @Override
+            public void writeTo(BufferedSink sink) throws IOException {
+                Source source;
+                try {
+                    source = Okio.source(file);
+                    Buffer buf = new Buffer();
+                    long remaining = contentLength();
+                    long current = 0;
+                    for (long readCount;(readCount = source.read(buf,2048)) != -1;) {
+                        sink.write(buf,readCount);
+                        current += readCount;
+                        Log.d(TAG,"===========upload progress>> "+(current*100f/remaining));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        return requestBody;
     }
 
     //文件下载
@@ -243,9 +321,63 @@ public class OkSimaple1 {
         }
     }
 
-    public OkHttpClient.Builder getBuilder() {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        return builder;
+    //以上如果cache没有过去会直接返回cache而不会发起网络请求，若过期会自动发起网络请求。
+    public void cacheRequest(String url, Context context,final int index) {
+        CacheControl.Builder builder = new CacheControl.Builder();
+        //builder.noCache();      //不使用缓存，全部走网络
+        //builder.noStore();      //不使用缓存，也不存储缓存
+        //builder.onlyIfCached(); //只使用缓存
+        //builder.noTransform();  //禁止转码
+        //builder.maxAge(20, TimeUnit.SECONDS); //指示客户机可以接收生存期不大于指定时间的响应。已这个时间为准，当缓存时间大于这个时间则重新请求数据
+        //builder.maxStale(10, TimeUnit.SECONDS);   //指示客户机可以接收超出超时期间的响应消息
+        builder.minFresh(10, TimeUnit.SECONDS);   //指示客户机可以接收响应时间小于当前时间加上指定时间的响应。
+        //CacheControl.FORCE_CACHE;     //仅仅使用缓存
+        //CacheControl.FORCE_NETWORK;   // 仅仅使用网络
+
+        final Request request;
+        /*if (NetworkUtil.isConnect(context.getApplicationContext())==NetworkUtil.NOCONNECT) {
+            request = new Request.Builder().cacheControl(CacheControl.FORCE_CACHE).url(url).build();
+        } else {
+            request = new Request.Builder().url(url).build();
+        }*/
+        request = new Request.Builder().cacheControl(builder.build()).url(url).build();
+
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                //OkHttp 提供了对用户认证的支持。当 HTTP 响应的状态代码是 401 时，OkHttp 会从设置的 Authenticator 对象中获取到新的 Request 对象并再次尝试发出请求。
+                // Authenticator 接口中的 authenticate 方法用来提供进行认证的 Request 对象.
+                .authenticator(new Authenticator() {
+                    @Override
+                    public Request authenticate(Route route, Response response) throws IOException {
+                        String credential = Credentials.basic("user","password");
+                        return response.request()
+                                .newBuilder()
+                                .header("Authorization",credential)
+                                .build();
+                    }
+                })
+                //设置缓存大小和位置
+                .cache(new Cache(context.getCacheDir(),10*1024*1024))
+                //设置网络过滤器
+                .addNetworkInterceptor(new CacheInterceptor())
+                .build()
+        ;
+
+        Call call = httpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.w(TAG,index+" onFailure: ");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG,index+" onResponse: "+response.code()+" "+response.body().string());
+            }
+        });
+        //call.cancel();
+
     }
+
+
 
 }

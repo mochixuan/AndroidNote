@@ -6,6 +6,7 @@ public class learn1 {
 
 	public static void main(String[] args) {
 		//System.out.println(replace2("We are happy."));
+		System.out.println(binary7(37));
 	}
 	
     /**
@@ -119,6 +120,38 @@ public class learn1 {
 			
 			return stack2.pop();
 		}
+	}
+	
+	/**
+	 * 写一个函数，输入n，求斐波那契数列的第n项值。
+	 */
+	static int fibonacci6(int n) {
+		if (n == 0) return 0;
+		if (n == 1) return 1;
+		return fibonacci6(n-1)+fibonacci6(n-2);
+	}
+	
+	/**
+	 * 请实现一个函数，输入一个整数，输出该数二进制表示中1的个数。例如把9表示成
+	 * 二进制1001，有2位1。因此如果输入9，该函数输出2
+	 */
+	static int binary7(int num) {
+		int sumOne = 0;
+		while (num > 0) {
+			for (int i = 0;i < num;i++) {
+				int temp = num - (1 << i);
+				if (temp < 0) {
+					++sumOne;
+					num = num - (1<<i-1);
+					break;
+				} else if(temp == 0){
+					++sumOne;
+					num = num - (1<<i);
+					break;
+				}
+			}
+		}
+		return sumOne;
 	}
 	
 }
