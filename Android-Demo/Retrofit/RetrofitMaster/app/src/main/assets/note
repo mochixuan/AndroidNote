@@ -1,0 +1,8 @@
+1. Retrofit2 的baseUlr 必须以 /（斜线） 结束，不然会抛出一个IllegalArgumentException,所以如果你看到别的教程没有以 / 结束，那么多半是直接从Retrofit 1.X 照搬过来的。
+2. 上面的 注1 应该描述为 baseUrl 中的路径(path)必须以 / 结束， 因为有些特殊情况可以不以/结尾，比如 其实这个 URL https://www.baidu.com?key=value用来作为baseUrl其实是可行的，因为这个URL隐含的路径就是 /（斜线，代表根目录） ，而后面的?key=value在拼装请求时会被丢掉所以写上也没用。之所以 Retrofit 2 在文档上要求必须以 /（斜线） 结尾的要求想必是要消除歧义以及简化规则。
+3. Retrofit 共22个注解。
+4. https://www.jianshu.com/p/308f3c54abdd 还不错的博客
+
+5. Query和QueryMap是对于url用的和path差不多GET
+6. Field和FieldMap是对POST请求的表单提交的
+7. Part和PartMap是对应提交的

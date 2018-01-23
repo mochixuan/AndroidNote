@@ -6,11 +6,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jakewharton.rxbinding.widget.RxTextView;
+import com.ppdl.rxjava.FlatMap.Course;
 import com.ppdl.rxjava.R;
 import com.ppdl.rxjava.base.BaseActivty;
 
 import org.reactivestreams.Subscription;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.BackpressureStrategy;
@@ -20,12 +24,14 @@ import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import rx.functions.Func1;
 
@@ -48,6 +54,7 @@ public class RxJava2Activity extends BaseActivty implements View.OnClickListener
         findViewById(R.id.btn4).setOnClickListener(this);
         findViewById(R.id.btn5).setOnClickListener(this);
         findViewById(R.id.btn6).setOnClickListener(this);
+        findViewById(R.id.btn9).setOnClickListener(this);
         tvReceiver = (TextView) findViewById(R.id.tv_receiver);
     }
 
@@ -76,6 +83,9 @@ public class RxJava2Activity extends BaseActivty implements View.OnClickListener
                 break;
             case R.id.btn6:
                 empty();
+                break;
+            case R.id.btn9:
+                tryWhen();
                 break;
         }
     }
@@ -330,6 +340,89 @@ public class RxJava2Activity extends BaseActivty implements View.OnClickListener
 
                     }
                 });
+    }
+
+    int temp = 0;
+    private void tryWhen() {
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                temp++;
+                Log.d(TAG,"===========subscribe>>"+temp);
+                e.onError(new IOException("IO错误"+temp));
+                //e.onNext("0");
+            }
+        })
+        /*.onErrorResumeNext(new Function<Throwable, ObservableSource<? extends String>>() {
+            @Override
+            public ObservableSource<? extends String> apply(Throwable throwable) throws Exception {
+                Log.d(TAG,"===========onErrorResumeNext>>"+throwable.getMessage());
+                return Observable.just("我把错误改了，上个错误是："+throwable.getMessage());
+            }
+        })*/
+        .retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
+            @Override
+            public ObservableSource<?> apply(Observable<Throwable> throwableObservable) throws Exception {
+                //Log.d(TAG,"===========retryWhen>>");
+                return throwableObservable.flatMap(new Function<Throwable, ObservableSource<?>>() {
+                    @Override
+                    public ObservableSource<?> apply(Throwable throwable) throws Exception {
+                        if (throwable instanceof IOException) {
+                            if (temp < 3) {
+                                return Observable.timer(1,TimeUnit.SECONDS);
+                            }
+                            Log.d(TAG,"===========retryWhen1>>"+temp);
+                            return Observable.error(new IOException("我把你改了,你没救了。"));
+                        }
+                        Log.d(TAG,"===========retryWhen2>>"+temp);
+                        return Observable.error(throwable);
+                    }
+                });
+            }
+        })
+        /*.repeatWhen(new Function<Observable<Object>, ObservableSource<?>>() {
+            @Override
+            public ObservableSource<?> apply(Observable<Object> objectObservable) throws Exception {
+                Log.d(TAG,"===========repeatWhen>>");
+                return Observable.just("repeatWhen");
+            }
+        })*/
+        .subscribe(new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.d(TAG,"===========onNext>>"+s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG,"===========onError>>"+e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG,"===========onComplete>>");
+            }
+        });
+    }
+
+    public void merge() {
+        List<Course> courses1 = new ArrayList<>();
+        courses1.add(new Course("语文1 - 1"));
+        courses1.add(new Course("语文1 - 2"));
+        courses1.add(new Course("语文1 - 3"));
+        List<Course> courses2 = new ArrayList<>();
+        courses2.add(new Course("数学2 - 1"));
+        courses2.add(new Course("数学2 - 2"));
+        courses2.add(new Course("数学2 - 3"));
+
+        Observable<List<Course>> observable1 = Observable.
+
+
     }
 
 }

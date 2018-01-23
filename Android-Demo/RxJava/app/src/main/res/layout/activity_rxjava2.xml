@@ -63,7 +63,14 @@
 
         <Button
             android:id="@+id/btn8"
-            android:text="7.buffer"
+            android:text="8.buffer"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn9"
+            android:text="9.trywhen"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

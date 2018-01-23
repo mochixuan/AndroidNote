@@ -92,6 +92,12 @@
 
 33 throttleFirst(): 防止按钮重复点击
 
+34 repeat(): 接收到.onCompleted()事件后触发重订阅。
+
+35 retry(): 接收到.onError()事件后触发重订阅。
+
+36 retryWhen() 在return使用flapMap可以返回一个Observable<?> 当放回的是非error时将会重新调用上一个被观察者的subscribe订阅方法，当发送entry()将结束且不会调用complete
+
 一.SecondActivity里的笔记
 
 1.一个Observable可以发出零个或者多个事件，知道结束或者出错。每发出一个事件，就会调用它Subscriber的onNext方法，最后调用Subscriber.onNext()或者Subscriber.onError()结束。
