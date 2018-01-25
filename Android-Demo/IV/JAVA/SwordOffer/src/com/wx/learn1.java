@@ -154,4 +154,13 @@ public class learn1 {
 		return sumOne;
 	}
 	
+	/**
+	 * 输入数字n，按顺序打印出从1到n位最大十进数的数值。比如输入3，则打印出1、
+	 * 2、3一直到最大三位数即999
+	 */
+	static void print8(int n) {
+		
+	}
+	
+	
 }
