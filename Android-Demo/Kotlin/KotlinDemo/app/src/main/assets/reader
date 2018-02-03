@@ -284,3 +284,16 @@ a--	a.dec() + see below
 66 val l = b.length()?: -1 如果 ?: 左边表达式不为空则返回
 
 67 没有异常检测
+
+68 集合
+```
+List<out T> : 只读的 类型是一个提供只读操作如 size、get等的接口
+MutableList : 可变的
+Kotlin 没有专门的语法结构创建 list 或 set。 要用标准库的方法，如 listOf()、 mutableListOf()、 setOf()、 mutableSetOf()
+目前 listOf 方法是使用 array list 实现的，但是未来可以利用它们知道自己不能变的事实，返回更节约内存的完全不可变的集合类型。
+lists11.toList()： 扩展方法只是复制列表项，因此返回的 list 保证永远不会改变。
+
+
+
+
+```

@@ -2,11 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wx.glidedemo1">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +22,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.Practice1Activity" />
-        <activity android:name=".activity.Practice2Activity"></activity>
+        <activity android:name=".activity.RecyclerActivity" />
+        <activity android:name=".activity.DataBindingActivity" />
+        <activity android:name=".activity.DataBinding1Activity" />
+        <activity android:name=".activity.Recycler1Activity"></activity>
     </application>
 
 </manifest>

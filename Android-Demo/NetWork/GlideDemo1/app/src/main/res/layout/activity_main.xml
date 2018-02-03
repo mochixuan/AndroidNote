@@ -16,7 +16,25 @@
 
         <Button
             android:id="@+id/btn_2"
-            android:text="练习2"
+            android:text="DataBinding And RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_3"
+            android:text="DataBinding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_4"
+            android:text="DataBinding1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_5"
+            android:text="RecyclerView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

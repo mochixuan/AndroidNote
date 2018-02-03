@@ -3,8 +3,7 @@ package com.wx.glidedemo1
 import android.Manifest
 import android.databinding.ViewDataBinding
 import com.tbruyelle.rxpermissions2.RxPermissions
-import com.wx.glidedemo1.activity.Practice1Activity
-import com.wx.glidedemo1.activity.Practice2Activity
+import com.wx.glidedemo1.activity.*
 import com.wx.glidedemo1.base.BaseActivity
 import com.wx.glidedemo1.databinding.ActivityMainBinding
 
@@ -26,7 +25,16 @@ class MainActivity : BaseActivity() {
             openActivity(Practice1Activity::class.java)
         }
         binding.btn2.setOnClickListener {
-            openActivity(Practice2Activity::class.java)
+            openActivity(RecyclerActivity::class.java)
+        }
+        binding.btn3.setOnClickListener {
+            openActivity(DataBindingActivity::class.java)
+        }
+        binding.btn4.setOnClickListener {
+            openActivity(DataBinding1Activity::class.java)
+        }
+        binding.btn5.setOnClickListener {
+            openActivity(Recycler1Activity::class.java)
         }
     }
 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="person1"
+            type="com.wx.glidedemo1.data.Person1"/>
+        <variable
+            name="presenter1"
+            type="com.wx.glidedemo1.activity.DataBinding1Activity.Presenter"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        tools:context="com.wx.glidedemo1.activity.DataBinding1Activity">
+
+        <!--都可以 android:onTextChanged="@{presenter.onTextChanged}"-->
+        <EditText
+            android:id="@+id/edit1"
+            android:layout_margin="6dp"
+            android:onTextChanged="@{presenter1::onTextChanged}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:layout_margin="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"/>
+
+        <ImageView
+            android:layout_margin="6dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <ImageView
+            android:layout_margin="6dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:layout_margin="6dp"
+            android:text='@{"姓名: "+person1.name}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_margin="6dp"
+            android:text='@{person1.name1.size != 0 ? person1.name1[0] : ""}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn1"
+            android:text="提交"
+            android:layout_margin="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

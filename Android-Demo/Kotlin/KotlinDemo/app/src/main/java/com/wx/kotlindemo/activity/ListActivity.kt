@@ -123,4 +123,24 @@ class ListActivity : BaseActivity() {
 
     }
 
+    //集合
+    fun collect() {
+
+        //val lists: List<Int> = listOf(1,2,3)
+
+        val lists1 = arrayListOf(1,2,3)
+        lists1[1] = 1
+
+        val lists11 = mutableListOf(1,2,3)
+        lists1.add(4)
+
+        val lists111: List<Int> = lists11.toList()
+        // 错: lists111[1] = 1
+
+        val maps1 = mapOf("a" to 1,"b" to 2)
+        maps1.get("a")
+
+
+    }
+
 }

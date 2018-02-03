@@ -24,7 +24,7 @@ abstract class BaseAdapter<T>() : RecyclerView.Adapter<BaseViewHolder>() {
     private var mDatas: MutableList<T>? = null
 
     init {
-        mDatas = ArrayList()
+        mDatas = mutableListOf()
     }
 
     fun setOnItemClickListener(listner: OnItemClickListner) {
@@ -48,20 +48,22 @@ abstract class BaseAdapter<T>() : RecyclerView.Adapter<BaseViewHolder>() {
         return mDatas!!.size
     }
 
-    fun addDatas(datas: ArrayList<T>,isWantAnimator: Boolean) {
+    fun addDatas(datas: MutableList<T>,isRefresh: Boolean,isWantAnimator: Boolean) {
         val start = mDatas!!.size
-        mDatas!!.addAll(datas)
+        mDatas!!.addAll(0,datas)
         val end = mDatas!!.size - 1
-        if (isWantAnimator)
-            notifyItemRangeInserted(start,end)
-        else
-            notifyDataSetChanged()
+        if (isRefresh) {
+            if (isWantAnimator)
+                notifyItemRangeChanged(0,datas.size)
+            else
+                notifyDataSetChanged()
+        }
     }
 
     fun addData(data: T,isWantAnimator: Boolean) {
-        mDatas!!.add(data)
+        mDatas!!.add(0,data)
         if (isWantAnimator)
-            notifyItemInserted(mDatas!!.size-1)
+            notifyItemInserted(0)
         else
             notifyDataSetChanged()
     }

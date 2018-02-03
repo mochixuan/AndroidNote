@@ -7,13 +7,11 @@ data class Student(var name: String , var age: Int) {
     inner class Person() {
         var sex: String? = null
 
-        var num: Int
-        get() {
-            return num
-        }
-        set(value) {
-            num = value
-        }
+        var num: Int = 0
+            get() = field
+            set(value) {
+                field = value
+            }
 
     }
 
