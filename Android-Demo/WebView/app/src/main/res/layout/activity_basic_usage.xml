@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context="com.wx.webview.activity.BasicUsageActivity">
 
-    </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_title"
+            android:textSize="16sp"
+            android:textColor="#333"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_below="@id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/ll_loading"
+            android:layout_below="@id/tv_title"
+            android:background="#f0f0f0"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.wx.webview.widget.CircleProgress
+                android:id="@+id/circle_progress"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </layout>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="mochixuan">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="测试交互">
+  <title>Mochixuan*Learning*WebView</title>
+  <style>
+     body {
+            font: 12px/1.5 tahoma, arial, 宋体;
+            background: #fff;
+            margin: 10 auto;
+            padding: 0;
+     }
+  </style>
+ </head>
+ <body>
+     <h1>Android调用Js</h1>
+     <h4 id="tip" style="color:red;font-size:30px">提示信息</h4>
+     <input type="button" id="btn1" width="200" value="显示自己的Alert"/>
+     <br/><br/>
+     <input type="button" id="btn2" width="200" value="显示自己的Confirm"/>
+     <br/><br/>
+ </body>
+ <script>
+    var mTip = document.getElementById('tip')
+    function callJSAlert() {
+        var result = alert("调用 JS callJSAlert");
+    }
+    function callJSConfirm() {
+        var result = confirm("调用 JS callJSConfirm");
+        if (result) {
+           mTip.innerHTML = "Confirm 单机确定"
+        } else {
+           mTip.innerHTML = "Confirm 单机取消"
+        }
+    }
+    var mBtn1 = document.getElementById('btn1')
+    mBtn1.onclick = function () {
+        callJSAlert()
+    }
+    var mBtn2 = document.getElementById('btn2')
+    mBtn2.onclick = function () {
+        callJSConfirm()
+    }
+  </script>
+</html>
