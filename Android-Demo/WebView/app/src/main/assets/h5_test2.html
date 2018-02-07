@@ -17,16 +17,33 @@
  </head>
  <body>
      <h1>Android调用Js</h1>
-     <h4 id="tip" style="color:red;font-size:30px">提示信息</h4>
+     <h4 id="tip" style="color:red;font-size:24px">提示信息</h4>
      <input type="button" id="btn1" width="200" value="显示自己的Alert"/>
      <br/><br/>
      <input type="button" id="btn2" width="200" value="显示自己的Confirm"/>
+     <br/><br/>
+     <input type="text" id="account" placeholder="账号"/>
+     <br/><br/>
+     <input type="text" id="password" placeholder="密码"/>
+     <br/><br/>
+     <input type="submit" id="btn3" width="200" value="提交"/>
+     <br/><br/>
+     <input type="button" id="btn4" width="200" value="调用Android使用javascriptInterface"/>
+     <br/><br/>
+     <input type="button" id="btn5" width="200" value="调用Android使用shouldoverrideUrlLoading拦截 toast"/>
+     <br/><br/>
+     <input type="button" id="btn6" width="200" value="调用Android使用shouldoverrideUrlLoading拦截 save"/>
+     <br/><br/>
+     <input type="button" id="btn7" width="200" value="调用Js Prompt 和 Android 通信" onclick="callPrompt()"/>
      <br/><br/>
  </body>
  <script>
     var mTip = document.getElementById('tip')
     function callJSAlert() {
         var result = alert("调用 JS callJSAlert");
+    }
+    function callJSAlert1(name) {
+        var result = alert("调用 JS callJSAlert: "+name);
     }
     function callJSConfirm() {
         var result = confirm("调用 JS callJSConfirm");
@@ -36,6 +53,33 @@
            mTip.innerHTML = "Confirm 单机取消"
         }
     }
+    function getLoginData() {
+        var account = document.getElementById('account')
+        var password = document.getElementById('password')
+        //不做判断了
+        return account+" "+password
+    }
+    function callAndroidHello() {
+        // 由于对象映射，所以调用android对象等于调用Android映射的对象
+        var result = android.hello('你好 Android 我是 Js')
+        mTip.innerHTML = result
+    }
+    function callAndroidToast() {
+        // 在当前页面打开一个窗口，就是不跳转切换网页
+        window.location = encodeURI("jswx://webview?type=Toast&data=我来自Js")
+        mTip.innerHTML = "jswx://webview?type=Toast&data=我来自Js"
+    }
+    function callAndroidSave() {
+        // 在当前页面打开一个窗口，就是不跳转切换网页
+        window.location = "jswx://webview?type=Save&name=123@163.com&password=mcx123"
+        mTip.innerHTML = "jswx://webview?type=Save&name=123@163.com&password=mcx123"
+    }
+    function callPrompt() {
+        var result = ""
+        while ((result = prompt("Js 通信框","输入你想输入的")) != null) {
+            mTip.innerHTML = result
+        }
+    }
     var mBtn1 = document.getElementById('btn1')
     mBtn1.onclick = function () {
         callJSAlert()
@@ -43,6 +87,22 @@
     var mBtn2 = document.getElementById('btn2')
     mBtn2.onclick = function () {
         callJSConfirm()
+    }
+    var mBtn3 = document.getElementById('btn3')
+    mBtn3.onclick = function () {
+        alert("Login Data: "+getLoginData())
+    }
+    var mBtn4 = document.getElementById('btn4')
+    mBtn4.onclick = function () {
+        callAndroidHello()
+    }
+    var mBtn5 = document.getElementById('btn5')
+    mBtn5.onclick = function () {
+        callAndroidToast()
+    }
+    var mBtn6 = document.getElementById('btn6')
+    mBtn6.onclick = function () {
+        callAndroidSave()
     }
   </script>
 </html>

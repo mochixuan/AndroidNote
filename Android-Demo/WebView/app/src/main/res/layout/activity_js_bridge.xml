@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         android:background="#7e18c2"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         tools:context="com.wx.webview.activity.JsBridgeActivity">
 
         <WebView
@@ -24,19 +25,19 @@
 
             <Button
                 android:id="@+id/btn1"
-                android:text="调用Js1"
+                android:text="调用JsAlert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btn2"
-                android:text="调用Js2"
+                android:text="调用JsConfirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btn3"
-                android:text="按钮3"
+                android:text="evaluateJavaScript"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -47,7 +48,10 @@
             android:padding="4dp"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
-            android:layout_width="match_parent"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <LinearLayout

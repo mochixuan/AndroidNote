@@ -3,7 +3,9 @@ package com.wx.webview
 import android.databinding.ViewDataBinding
 import com.wx.glidedemo1.base.BaseActivity
 import com.wx.webview.activity.BasicUsageActivity
+import com.wx.webview.activity.CacheMechainActivity
 import com.wx.webview.activity.JsBridgeActivity
+import com.wx.webview.activity.SafeActivity
 import com.wx.webview.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
@@ -23,6 +25,12 @@ class MainActivity : BaseActivity() {
         }
         binding.btnJsBridge.setOnClickListener {
             openActivity(JsBridgeActivity::class.java)
+        }
+        binding.btnCache.setOnClickListener {
+            openActivity(CacheMechainActivity::class.java)
+        }
+        binding.btnSafe.setOnClickListener {
+            openActivity(SafeActivity::class.java)
         }
     }
 

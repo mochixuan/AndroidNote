@@ -14,6 +14,8 @@ object DataConstant {
 
     const val ASSETS_H5TEST2_PATH = "file:///android_asset/h5_test2.html"
 
+    const val ASSETS_H5TEST3_PATH = "file:///android_asset/h5_test3.html"
+
     const val TAOBAO_URL = "https://m.taobao.com/"
 
     const val JINGDONG_URL = "https://m.jd.com/"

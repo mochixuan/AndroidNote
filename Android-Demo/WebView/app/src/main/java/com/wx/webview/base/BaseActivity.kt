@@ -7,6 +7,7 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 
 /**
  * Created by wangxuan on 2018/1/24.
@@ -29,6 +30,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun openActivity(otherActivity: Class<out Activity>) {
         startActivity(Intent(this,otherActivity))
+    }
+
+    fun showToast(data: String) {
+        Toast.makeText(this,data,Toast.LENGTH_SHORT).show()
     }
 
 }
