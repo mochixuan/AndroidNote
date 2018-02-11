@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -168,4 +169,9 @@ public class MainActivity extends BaseActivity {
         popupWindow.showAsDropDown(view,-(300-view.getMeasuredWidth())/2,0);
     }
 
+    private void dialog() {
+        new AlertDialog.Builder(this)
+                .create()
+                .show();
+    }
 }

@@ -2,10 +2,13 @@ package com.wx.dialogmaster.activity1
 
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.ServiceConnection
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.IBinder
 import android.os.SystemClock
 import android.support.v4.app.NotificationCompat
 import android.support.v4.app.TaskStackBuilder
@@ -43,8 +46,24 @@ class OneActivity : AppCompatActivity() {
             beginForeService()
         }
 
-        mIntent = Intent(this,Test1Service::class.java)
-        startService(mIntent)
+        //mIntent = Intent(this,Test1Service::class.java)
+        //startService(mIntent)
+
+        findViewById<Button>(R.id.btn3).setOnClickListener {
+            Log.d(TAG,"=============>>>bindService")
+            val intent = Intent(this@OneActivity,Test1Service::class.java)
+            bindService(intent,mServiceConnect,Context.BIND_AUTO_CREATE)
+        }
+
+    }
+
+    private val mServiceConnect = object : ServiceConnection {
+        override fun onServiceDisconnected(p0: ComponentName?) {
+            Log.d(TAG,"=============>>>onServiceDisconnected")
+        }
+        override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {
+            Log.d(TAG,"=============>>>onServiceConnected")
+        }
     }
 
     override fun onNewIntent(intent: Intent?) {

@@ -45,14 +45,9 @@ public class MessengerService extends Service {
         mMessenger = new Messenger(mHandler);
     }
 
-
-
-
     @Override
     public IBinder onBind(Intent intent) {
         return mMessenger.getBinder();
     }
-
-
 
 }
