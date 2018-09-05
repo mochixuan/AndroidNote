@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class base {
-	
+
 	public static void main(String[] args) {
 		//bubbleSort();
 		//choiceSort();
@@ -12,8 +12,8 @@ public class base {
 		//quickSort();
 		linkHashMap();
 	}
-	
-	//Ã°ÅİÅÅĞò: ±È½ÏÁ½¸öÏàÁÚµÄÔªËØ£¬½«Öµ´óµÄÔªËØ½»»»ÖÁÓÒ¶Ë¡£O(n*n)
+
+	//å†’æ³¡æ’åº: æ¯”è¾ƒä¸¤ä¸ªç›¸é‚»çš„å…ƒç´ ï¼Œå°†å€¼å¤§çš„å…ƒç´ äº¤æ¢è‡³å³ç«¯ã€‚O(n*n)
 	static void bubbleSort() {
 		int[] datas = {8,3,1,5,2,7,6,9,0,4};
 		int temp = 0;
@@ -26,14 +26,14 @@ public class base {
 				}
 			}
 		}
-		
+
 		for (int i = 0 ; i < datas.length ; i++) {
 			System.out.print(datas[i]+" ");
 		}
 	}
-	
-	//Ñ¡ÔñÅÅĞò: Ã¿Ò»ÌË´Ó´ıÅÅĞòµÄ¼ÇÂ¼ÖĞÑ¡³ö×îĞ¡µÄÔªËØ£¬Ë³Ğò·ÅÔÚÒÑÅÅºÃĞòµÄĞòÁĞ×îºó£¬Ö±µ½È«²¿¼ÇÂ¼ÅÅĞòÍê±Ï¡£
-	//Ê±¼ä¸´ÔÓ¶ÈO(n*n) ĞÔÄÜÉÏÓÅÓÚÃ°ÅİÅÅĞò ½»»»´ÎÊıÉÙ ×î´óÊ±n-1
+
+	//é€‰æ‹©æ’åº: æ¯ä¸€è¶Ÿä»å¾…æ’åºçš„è®°å½•ä¸­é€‰å‡ºæœ€å°çš„å…ƒç´ ï¼Œé¡ºåºæ”¾åœ¨å·²æ’å¥½åºçš„åºåˆ—æœ€åï¼Œç›´åˆ°å…¨éƒ¨è®°å½•æ’åºå®Œæ¯•ã€‚
+	//æ—¶é—´å¤æ‚åº¦O(n*n) æ€§èƒ½ä¸Šä¼˜äºå†’æ³¡æ’åº äº¤æ¢æ¬¡æ•°å°‘ æœ€å¤§æ—¶n-1
 	static void choiceSort() {
 		int[] datas = {8,3,1,5,2,7,6,9,0,4};
 		int temp = 0;
@@ -49,16 +49,16 @@ public class base {
 				datas[i] = datas[key];
 				datas[key] = temp;
 			}
-			
+
 		}
-		
+
 		for (int i = 0 ; i < datas.length ; i++) {
 			System.out.print(datas[i]+" ");
 		}
 	}
 
-	//²åÈëÅÅĞò: Í¨¹ı¹¹½¨ÓĞĞòĞòÁĞ£¬¶ÔÓÚÎ´ÅÅĞòÊı¾İ£¬ÔÚÒÑÅÅĞòĞòÁĞÖĞ´ÓºóÏòÇ°É¨Ãè£¬ÕÒµ½ÏàÓ¦µÄÎ»ÖÃ²¢²åÈë¡£
-	//O(n*n) ĞÔÄÜÉÏÓÅÓÚÃ°ÅİÅÅĞòºÍÑ¡ÔñÅÅĞò
+	//æ’å…¥æ’åº: é€šè¿‡æ„å»ºæœ‰åºåºåˆ—ï¼Œå¯¹äºæœªæ’åºæ•°æ®ï¼Œåœ¨å·²æ’åºåºåˆ—ä¸­ä»åå‘å‰æ‰«æï¼Œæ‰¾åˆ°ç›¸åº”çš„ä½ç½®å¹¶æ’å…¥ã€‚
+	//O(n*n) æ€§èƒ½ä¸Šä¼˜äºå†’æ³¡æ’åºå’Œé€‰æ‹©æ’åº
 	static void insertSort() {
 		int[] datas = {8,3,1,5,2,7,6,9,0,4};
 		int temp = 0;
@@ -70,13 +70,13 @@ public class base {
 			}
 			if (i != j) datas[j] = temp;
 		}
-		
+
 		for (int i = 0 ; i < datas.length ; i++) {
 			System.out.print(datas[i]+" ");
 		}
 	}
-	
-	//¿ìËÙÅÅĞòO(nlog2n): Í¨¹ıÒ»ÌËÅÅĞò½«´ıÅÅĞò¼ÇÂ¼·Ö¸î³É¶ÀÁ¢µÄÁ½²¿·Ö£¬ÆäÖĞÒ»²¿·Ö¼ÇÂ¼µÄ¹Ø¼ü×Ö¾ù±ÈÁíÒ»²¿·Ö¹Ø¼ü×ÖĞ¡£¬Ôò·Ö±ğ¶ÔÕâÁ½²¿·Ö¼ÌĞø½øĞĞÅÅĞò£¬Ö±µ½Õû¸öĞòÁĞÓĞĞò¡£
+
+	//å¿«é€Ÿæ’åºO(nlog2n): é€šè¿‡ä¸€è¶Ÿæ’åºå°†å¾…æ’åºè®°å½•åˆ†å‰²æˆç‹¬ç«‹çš„ä¸¤éƒ¨åˆ†ï¼Œå…¶ä¸­ä¸€éƒ¨åˆ†è®°å½•çš„å…³é”®å­—å‡æ¯”å¦ä¸€éƒ¨åˆ†å…³é”®å­—å°ï¼Œåˆ™åˆ†åˆ«å¯¹è¿™ä¸¤éƒ¨åˆ†ç»§ç»­è¿›è¡Œæ’åºï¼Œç›´åˆ°æ•´ä¸ªåºåˆ—æœ‰åºã€‚
 	static void quickSort() {
 		int[] datas = {8,3,1,5,2,7,6,9,0,4,8,7,10};
 		qSort(datas, 0, datas.length-1);
@@ -84,7 +84,7 @@ public class base {
 			System.out.print(datas[i]+" ");
 		}
 	}
-	
+
 	static void qSort(int[] arr , int low , int high) {
 		if (low < high) {
 			int pivot = partition(arr, low, high);
@@ -92,8 +92,8 @@ public class base {
 			qSort(arr , pivot+1 , high );
 		}
 	}
-	
-	//¿ìËÙÅÅĞò
+
+	//å¿«é€Ÿæ’åº
 	static int partition(int[] arr,int low,int high) {
 		int pivot = arr[low];
 		while(low < high) {
@@ -105,7 +105,7 @@ public class base {
 		arr[low] = pivot;
 		return low;
 	}
-	
+
 	//linkedHashMap
 	static void linkHashMap() {
 		LinkedHashMap<Integer, String>  map = new LinkedHashMap<>(0,0.75f,true);
@@ -118,10 +118,10 @@ public class base {
 		map.get(2);
 		map.get(3);
 		map.get(4);
-		
+
 		for(Map.Entry<Integer, String> entry: map.entrySet()) {
 			System.out.println(entry.getKey()+"  "+entry.getValue());
 		}
 	}
-	
+
 }
