@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:checked="true"
+            android:icon="@mipmap/home"
+            android:title="主页" />
+        <item
+            android:id="@+id/theme"
+            android:icon="@mipmap/theme"
+            android:title="主题" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@mipmap/setting"
+            android:title="设置" />
+    </group>
+
+    <item android:title="二级菜单">
+        <menu>
+            <item
+                android:icon="@mipmap/favorite"
+                android:title="收藏" />
+            <item
+                android:icon="@mipmap/ablum"
+                android:title="相册" />
+            <item
+                android:icon="@mipmap/friends"
+                android:title="好友" />
+        </menu>
+    </item>
+
+</menu>

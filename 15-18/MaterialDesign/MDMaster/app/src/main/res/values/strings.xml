@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MDMaster</string>
+    <string name="open_drawer">Open</string>
+    <string name="close_drawer">Close</string>
+    <string name="search">搜索</string>
+    <string name="tip">提醒</string>
+    <string name="tran_name">tran_name</string>
+    <string name="text_data1">\t\tMaterial Design语言[1]  的一些重要功能包括 系统字体Roboto的升级版本 ，同时颜色更鲜艳，动画效果更突出。杜拉特还简要谈到了新框架的一些变化——这个新框架也于今天在 google.com/design 公开发布。谷歌的想法是让谷歌平台上的开发者掌握这个新框架，从而让所有应用就有统一的外观，就像是苹果向开发者提出的设计原则一样。谷歌还基于这种新的设计语言对本公司旗舰应用进行了重新设计，包括安卓和网页端的Gmail和Calendar。大家可能还会记得，看到过有关这些变动的文章， 有些博客 已经掌握了外泄截屏，显示经过了重新设计的Gmail，界面更干净、更简约。在安卓平台上，这种新界面被称为Material，支持各种新动画效果，具有内置的实时UI阴影，以及可在不同屏幕之间切换的hero元素</string>
+    <string name="text_data2">\t\t过去Google的产品线，每一个都相当的独立，在产品的设计上反映得尤为明显，甚至不必看产品设计，只要看一下Google每款产品的LOGO都能发现许多不同风格的设计。这种混乱难以体现出Google的风格，如果Google的风格不是混乱和无序的话。</string>
+    <string name="text_data3">\t\t2011年，拉里·佩奇成为Google CEO之后，他管理公司的政策从过去的自由、放任，变为紧密、整合。根据我们的报道，在Google发展的早期，因为鼓励观点的碰撞，结果发展成一种不留情面的争论氛围，高管之间冲突不断，甚至会拒绝合作。佩奇决心要改变公司的氛围，2013年2月，在纳帕山谷的卡内罗斯客栈酒店里，他对所有Google高管说，Google要实现10倍的发展速度，要用全新的方法来解决问题，因此高管之间要学会合作。从现在开始，Google要对争斗零容忍。</string>
+    <string name="text_data4">\t\t除了Google不同产品线相互之间变得更加开放、合作外，佩奇还大胆改变[2]  Google“以工程师为主导”的文化。2011年，公司启动代号为“肯尼迪”的项目，召集公司里所有重要的设计师，重新设计Google里的每一项产品，寻找一种共同的设计语言。最终他们找到跨产品的设计是“卡片式设计”。不仅如此，2012年，佩奇大胆地作出一项决定，让设计师参与到早期产品的设计开发中，这项产品是我们看到的Google Now——一项典型采用卡片式设计的跨设备产品，从Android到Chrome，它的表现都几乎一致。</string>
+    <string name="text_data5">\t\t可以这么说，从Google Now上，Google的设计师们通过整合Google现有的技术和能力，再加上对跨设备界面与交互思考，结合卡片式设计，终于设计出在不同设备上界面和体验都相对统一的产品。而这种跨界的设计经验，经过两年的努力，复用在一致饱受割裂、碎片化困扰的Android平台上。</string>
+    <string name="text_data6">\t\tAndroid一开始充满着旧Google时代的风格：自由、放任。开发者可以任意上传自己的应用，而不必通过审核；开发者可以随意按照自己的想法设计应用，Google方面不予任何限制。可以说，Android一开始就是一片Google开辟的荒地，他允许每个人都可以随意使用，结果是所有人都各行其是，让这块荒地乱糟糟的。直到Android 4.0，从Palm跳槽到Google担任Android用户体验副总裁的马蒂亚斯·杜瓦迪（Matias Duarte）上任后，才真正提出设计指导。</string>
+</resources>

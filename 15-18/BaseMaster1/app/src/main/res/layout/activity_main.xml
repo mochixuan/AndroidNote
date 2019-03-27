@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.wx.basemaster1.MainActivity">
+
+        <Button
+            android:id="@+id/btn_constrain"
+            android:text="ConstrainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_constrain1"
+            android:text="ConstrainLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btn_constrain" />
+
+        <Button
+            android:id="@+id/btn_kotlin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kotlin"
+            app:layout_constraintTop_toBottomOf="@+id/btn_constrain1" />
+
+        <Button
+            android:id="@+id/btn_network"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NetWork"
+            app:layout_constraintTop_toBottomOf="@+id/btn_kotlin" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

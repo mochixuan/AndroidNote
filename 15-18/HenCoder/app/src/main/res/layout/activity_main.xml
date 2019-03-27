@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.wx.hencoder.MainActivity">
+
+        <Button
+            android:id="@+id/btn1"
+            android:text="自定义 View 1-1 绘制基础"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn2"
+            app:layout_constraintTop_toBottomOf="@id/btn1"
+            android:text="自定义 View 1-2 Paint 详解"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn3"
+            app:layout_constraintTop_toBottomOf="@id/btn2"
+            android:text="自定义 View 1-3 文字的绘制"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn4"
+            app:layout_constraintTop_toBottomOf="@id/btn3"
+            android:text="自定义 View 1-4 文字的绘制"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn5"
+            app:layout_constraintTop_toBottomOf="@id/btn4"
+            android:text="自定义 View 1-5 文字的绘制"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn6"
+            app:layout_constraintTop_toBottomOf="@id/btn5"
+            android:text="自定义 View 1-6 属性动画 (上手篇)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn7"
+            app:layout_constraintTop_toBottomOf="@id/btn6"
+            android:text="自定义 View 1-7 属性动画 (进阶篇)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn8"
+            app:layout_constraintTop_toBottomOf="@id/btn7"
+            android:text="仿写酷界面"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

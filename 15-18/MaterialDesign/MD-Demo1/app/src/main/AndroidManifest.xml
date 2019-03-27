@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ppdl.md">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.previous.CoordinatorActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.AppBarActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.DrawerNaviActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity android:name=".activity.previous.FloatingSnakeBarActivity" />
+        <activity
+            android:name=".activity.previous.TabLayoutActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.TextInputActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.RippleActitvity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.RevelAniActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.ScreenActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.screen.ScreenOneActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.screen.JumpOneActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.SheetActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.SheetDialogActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.SwitchCompatActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.screen.ScreenTwoActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.screen.JumpTwoActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.previous.AppBar1Activity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity android:name=".bottom.BottomActivity" />
+        <activity android:name=".activity.anim.Anim1Activity" />
+        <activity android:name=".activity.anim.Anim2Activity" />
+        <activity
+            android:name=".activity.previous.AppBar2Activity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.anim.Anim3Activity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity android:name=".activity.status.StatusActivity" />
+        <activity
+            android:name=".activity.status.Status1Activity"
+            android:theme="@style/Status" />
+        <activity
+            android:name=".activity.status.Status2Activity"
+            android:theme="@style/Status" />
+        <activity
+            android:name=".activity.status.Status3Activity"
+            android:theme="@style/AppThemeNoTitle1" />
+        <activity android:name=".activity.screen.ScreenThreeActivity" />
+        <activity android:name=".activity.screen.ScreenFourActivity" />
+        <activity
+            android:name=".activity.screen.ScreenFiveActivity"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity android:name=".activity.screen.ScreenSixActivity"
+            android:theme="@style/AppThemeNoTitle" />
+    </application>
+
+</manifest>
