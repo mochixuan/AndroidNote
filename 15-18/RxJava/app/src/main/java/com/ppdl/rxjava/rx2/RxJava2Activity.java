@@ -420,8 +420,6 @@ public class RxJava2Activity extends BaseActivty implements View.OnClickListener
         courses2.add(new Course("数学2 - 2"));
         courses2.add(new Course("数学2 - 3"));
 
-        Observable<List<Course>> observable1 = Observable.
-
 
     }
 

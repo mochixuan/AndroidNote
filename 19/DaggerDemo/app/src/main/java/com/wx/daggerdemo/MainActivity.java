@@ -27,4 +27,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this,RecyclerViewActivity.class));
     }
 
+    @OnClick(R.id.btn_dagger)
+    protected void enterDaggerView() {
+        startActivity(new Intent(this,Dagger2Activity.class));
+    }
+
 }

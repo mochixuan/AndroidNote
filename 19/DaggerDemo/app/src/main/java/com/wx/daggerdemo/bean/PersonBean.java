@@ -1,11 +1,18 @@
 package com.wx.daggerdemo.bean;
 
+import javax.inject.Inject;
+
 public class PersonBean {
 
     private String image;
-    private String name;
+    private String name = "xiao xuan zi";
     private String desc;
 
+    public PersonBean() {
+
+    }
+
+    @Inject
     public PersonBean(String image, String name, String desc) {
         this.image = image;
         this.name = name;

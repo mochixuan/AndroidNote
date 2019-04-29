@@ -1,5 +1,6 @@
 package com.ppdl.rxjava.rx;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.Scheduler;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -280,57 +287,102 @@ public class SecondActivity extends BaseActivty implements View.OnClickListener{
                 });
     }
 
+    @SuppressLint("CheckResult")
     public void switchMap() {
-        Observable.just(1,2,3,4)
-                .switchMap(new Func1<Integer, Observable<String>>() {
-                    @Override
-                    public Observable<String> call(Integer integer) {
-                        return Observable.just(integer+"").subscribeOn(Schedulers.newThread());
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.e(TAG,"===================onCompleted");
-                    }
+//        Observable.just(1,2,3,4)
+//                .switchMap(new Func1<Integer, Observable<String>>() {
+//                    @Override
+//                    public Observable<String> call(Integer integer) {
+//                        return Observable.just(integer+"").subscribeOn(Schedulers.newThread());
+//                    }
+//                })
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<String>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.e(TAG,"===================onCompleted");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.e(TAG,"===================onError");
+//                    }
+//
+//                    @Override
+//                    public void onNext(String integer) {
+//                        Log.e(TAG,"===================onNext:"+integer);
+//                    }
+//                });
+//
+//        Log.i(TAG,"===========================================================================");
+//
+//        Observable.just(1,2,3,4)
+//                .switchMap(new Func1<Integer,Observable<String>>(){
+//                    @Override
+//                    public Observable<String> call(Integer integer) {
+//                        return Observable.just(integer+"");
+//                    }
+//                })
+//                .subscribe(new Subscriber<String>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.e(TAG,"===================onCompleted1");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.e(TAG,"===================onError1");
+//                    }
+//
+//                    @Override
+//                    public void onNext(String s) {
+//                        Log.e(TAG,"===================onNext1:"+s);
+//                    }
+//                });
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(TAG,"===================onError");
-                    }
+//        io.reactivex.Observable.just(1,2,3,4)
+//                .switchMap(new Function<Integer, ObservableSource<String>>() {
+//                    @Override
+//                    public ObservableSource<String> apply(Integer integer) throws Exception {
+//                        return io.reactivex.Observable.just(integer+"");
+//                    }
+//                }).subscribeOn(io.reactivex.schedulers.Schedulers.newThread())
+//                .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<String>() {
+//                    @Override
+//                    public void accept(String s) throws Exception {
+//                        Log.d(TAG,"=========>>>"+s);
+//                    }
+//                });
 
+
+        io.reactivex.Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception{
+                e.onNext(1);
+                Thread.sleep(200);
+                e.onNext(2);
+                Thread.sleep(300);
+                e.onNext(3);
+                Thread.sleep(401);
+                e.onNext(4);
+                Thread.sleep(500);
+                e.onNext(5);
+                Thread.sleep(600);
+                e.onNext(6);
+                Thread.sleep(300);
+                e.onNext(7);
+            }
+        }).debounce(400,TimeUnit.MILLISECONDS)
+                .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
+                .subscribeOn(io.reactivex.schedulers.Schedulers.newThread())
+                .subscribe(new Consumer<Integer>() {
                     @Override
-                    public void onNext(String integer) {
-                        Log.e(TAG,"===================onNext:"+integer);
+                    public void accept(Integer integer) throws Exception {
+                        Log.d(TAG,"=========>>>"+integer);
                     }
                 });
 
-        Log.i(TAG,"===========================================================================");
-
-        Observable.just(1,2,3,4)
-                .switchMap(new Func1<Integer,Observable<String>>(){
-                    @Override
-                    public Observable<String> call(Integer integer) {
-                        return Observable.just(integer+"");
-                    }
-                })
-                .subscribe(new Subscriber<String>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.e(TAG,"===================onCompleted1");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(TAG,"===================onError1");
-                    }
-
-                    @Override
-                    public void onNext(String s) {
-                        Log.e(TAG,"===================onNext1:"+s);
-                    }
-                });
     }
 
     public void buffer() {

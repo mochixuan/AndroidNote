@@ -293,7 +293,10 @@ Kotlin 没有专门的语法结构创建 list 或 set。 要用标准库的方�
 目前 listOf 方法是使用 array list 实现的，但是未来可以利用它们知道自己不能变的事实，返回更节约内存的完全不可变的集合类型。
 lists11.toList()： 扩展方法只是复制列表项，因此返回的 list 保证永远不会改变。
 
-
-
-
 ```
+
+69 val、const+val区别
+http://www.mamicode.com/info-detail-1929175.html
+
+70. 作用域函数
+run、with、T.run、T.let、T.also 以及 T.apply
