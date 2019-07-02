@@ -9,6 +9,8 @@ import android.widget.Toast
 
 abstract class BaseActivity : Activity(), BaseView{
 
+    protected val TAG: String = this.javaClass.simpleName;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setDataBinding(DataBindingUtil.setContentView<ViewDataBinding>(this,layoutId))

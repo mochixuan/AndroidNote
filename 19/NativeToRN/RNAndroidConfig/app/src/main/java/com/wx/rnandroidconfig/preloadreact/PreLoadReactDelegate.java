@@ -19,11 +19,6 @@ import com.wx.rnandroidconfig.app.MainApplication;
 
 import javax.annotation.Nullable;
 
-/**
- * 处理预加载代理类
- * Created by Song on 2017/5/10.
- */
-
 public class PreLoadReactDelegate {
 
     private final Activity mActivity;

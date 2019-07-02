@@ -22,7 +22,7 @@ public class Butterknife {
         View decorView = activity.getWindow().getDecorView();
         for (Field field : fields) {
             //然后遍历成员集合，看是否有标记了@BindView注解的成员
-            BindView bind= field.getAnnotation(BindView.class);
+            BindView bind = field.getAnnotation(BindView.class);
             if (bind != null) {
                 //对所有属性设置访问权限  当类中的成员变量为private时 必须设置此项
                 field.setAccessible(true);

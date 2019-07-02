@@ -1,0 +1,31 @@
+
+ext {
+    //gradle
+    android_plugin_version = "3.1.1"
+    // kotlin
+    kotlin_version = "1.2.71"
+    // supports
+    supports_version = '28.0.0'
+    // android versions
+    default_configs = [
+            compileSdkVersion: 28,
+            applicationId: "com.wx.acc",
+            minSdkVersion: 19,
+            targetSdkVersion: 28,
+            versionCode: 1,
+            versionName: "1.0",
+            testInstrumentationRunner: "android.support.test.runner.AndroidJUnitRunner"
+    ]
+    //supports
+    supports = [
+            constraint_layout: "com.android.support.constraint:constraint-layout:1.1.3",
+            appcompat_v7: "com.android.support:appcompat-v7:28.0.0",
+            kotlin_stdlib_jdk7: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin_version}"
+    ]
+    //dependencies
+    deps = [
+            arc_lifecycle: "android.arch.lifecycle:extensions:1.1.1" ,//ViewMode
+            databinding: "com.android.databinding:compiler:$android_plugin_version"// l android LiveData
+    ]
+
+}

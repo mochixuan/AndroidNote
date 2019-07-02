@@ -6,12 +6,16 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output RNAndroidConfig/app/src/main/assets/index.android.bundle --assets-dest RNAndroidConfig/app/src/main/res/"
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output RNAndroidConfig/app/src/main/assets/index.android.bundle --assets-dest RNAndroidConfig/app/src/main/res/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "react": "^16.8.6",
     "react-native": "^0.59.5"
+  },
+  "devDependencies": {
+    "metro": "^0.54.1",
+    "metro-core": "^0.54.1"
   }
 }

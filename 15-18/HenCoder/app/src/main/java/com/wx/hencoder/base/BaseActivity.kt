@@ -20,7 +20,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setDataBinding(DataBindingUtil.setContentView(this,layoutId))
+        setDataBinding(DataBindingUtil.setContentView<ViewDataBinding>(this,layoutId))
         initData()
     }
 

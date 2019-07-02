@@ -4,7 +4,9 @@ import {
     Text,
     SafeAreaView,
     StyleSheet,
-    Image
+    Image,
+    TouchableOpacity,
+    NativeModules
 } from 'react-native'
 
 export default class OnePage extends Component {
@@ -14,6 +16,11 @@ export default class OnePage extends Component {
             <SafeAreaView style={styles.container}>
                 <View style={styles.swipe}>
                     <Text style={styles.text}>我是正常加载的React Native</Text>
+                    <TouchableOpacity onPress={()=>{
+                        NativeModules.WxModule.openActivity('ThreePage')
+                    }}>
+                        <Text style={styles.text}>跳转到第三个界面</Text>
+                    </TouchableOpacity>
                     <Image
                         style={styles.img}
                         source={{uri: 'http://n.sinaimg.cn/photo/700/w1000h500/20190428/zY0J-hwfpcxm8040335.jpg'}}

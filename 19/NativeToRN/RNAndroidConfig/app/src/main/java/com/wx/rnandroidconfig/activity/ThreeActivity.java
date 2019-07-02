@@ -1,16 +1,16 @@
 package com.wx.rnandroidconfig.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import com.facebook.react.ReactActivity;
+import com.wx.rnandroidconfig.constant.BaseConstant;
 
-import com.wx.rnandroidconfig.R;
+import javax.annotation.Nullable;
 
-public class ThreeActivity extends AppCompatActivity {
+public class ThreeActivity extends ReactActivity {
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_three);
+    protected String getMainComponentName() {
+        return BaseConstant.RN_MC_NAME_THREE;
     }
 
 }

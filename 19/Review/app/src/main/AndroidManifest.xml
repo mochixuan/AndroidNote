@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +17,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RetrofitActivity" />
-        <activity android:name=".activity.KotlinActivity"></activity>
+        <activity android:name=".activity.KotlinActivity" />
+        <activity android:name=".activity.AnnotationActivity" />
+        <activity
+            android:name=".activity.CycleLiftActivity"
+            android:configChanges="keyboardHidden|orientation" />
+
+        <service
+            android:name=".service.TestService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.ServiceActivity" />
+        <activity android:name=".mvp.LoginActivity" />
+        <activity android:name=".rxjava2.RxjavaActivity"></activity>
     </application>
 
 </manifest>
